@@ -19,7 +19,7 @@ const HomePage = () => {
     <div className="bg-blue-950 min-h-screen flex items-center justify-center">
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-          <div className="bg-white rounded-lg shadow-lg p-6">
+          <div className="bg-blue-300 rounded-lg shadow-lg p-6">
             {activeForm === "login" ? (
               <Login handleToggleForm={handleToggleForm} />
             ) : (

@@ -1,16 +1,22 @@
 import { useState } from "react";
 
+//redux hooks
+import { useDispatch } from "react-redux";
+import { signupRequest } from "../../store/actions/signupAction";
+
 const Signup = ({ handleToggleForm }) => {
+  const dispatch = useDispatch();
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSignup = (e) => {
     e.preventDefault();
-    // Perform signup logic or submit form data
-    console.log("Username:", username);
-    console.log("Email:", email);
-    console.log("Password:", password);
+
+    // Dispatch the sign-up action with the form data
+    dispatch(signupRequest({ username, email, password }));
+
     // Clear form fields
     setUsername("");
     setEmail("");

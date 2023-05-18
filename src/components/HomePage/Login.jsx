@@ -1,17 +1,30 @@
+//react
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+//import { useNavigate } from "react-router-dom";
+
+//redux
+import { signinRequest } from "../../store/actions/signinAction";
 
 const Login = ({ handleToggleForm }) => {
-  const [username, setUsername] = useState("");
+  const dispatch = useDispatch();
+  //const navigate = useNavigate()
+
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Perform login logic or submit form data
-    console.log("Username:", username);
-    console.log("Password:", password);
+
+    // Dispatch the sign-in action with the form data
+    await dispatch(signinRequest({ email, password }));
+
     // Clear form fields
-    setUsername("");
+    setEmail("");
     setPassword("");
+
+    // Navigate to the desired location after successful login
+    //navigate("/dashboard");
   };
 
   return (
@@ -20,9 +33,9 @@ const Login = ({ handleToggleForm }) => {
       <form className="flex flex-col gap-4" onSubmit={handleLogin}>
         <input
           type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Email address"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           className="border rounded p-2"
         />
         <input
