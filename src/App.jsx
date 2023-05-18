@@ -2,9 +2,10 @@ import "./index.css";
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 
+import axios from "axios";
+
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-// import { getCurrentUser } from "./store/actions/currentUserAction";
 import { getCurrentUser } from "./store/auth/actions";
 
 // Component imports
@@ -15,7 +16,9 @@ import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
   const dispatch = useDispatch();
-  const currentUser = useSelector((state) => state.currentUser);
+  const currentUser = useSelector((state) => {
+    return state.auth.currentUser;
+  });
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");

@@ -10,13 +10,14 @@ const Login = ({ handleToggleForm }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const currentUser = useSelector((state) => state.auth.currentUser);
-
+  const currentUser = useSelector((state) => {
+    return state.auth.currentUser;
+  });
   useEffect(() => {
-    if (currentUser && currentUser.isAuthenticated) {
+    if (currentUser) {
       navigate("/dashboard");
     }
-  }, [currentUser, navigate]);
+  }, [currentUser]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
