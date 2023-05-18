@@ -1,11 +1,7 @@
-//react
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
-//redux
-import { signinRequest } from "../../store/actions/signinAction";
-import { useSelector } from "react-redux";
+import { signinRequest } from "../../store/auth/actions";
 
 const Login = ({ handleToggleForm }) => {
   const dispatch = useDispatch();
@@ -14,24 +10,24 @@ const Login = ({ handleToggleForm }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const currentUser = useSelector((state) => state.currentUser);
+  const currentUser = useSelector((state) => state.auth.currentUser);
 
   useEffect(() => {
-    if (currentUser.id) {
+    if (currentUser && currentUser.isAuthenticated) {
       navigate("/dashboard");
     }
-  }, [currentUser]);
+  }, [currentUser, navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     if (email === "" || password === "") {
       alert("No credentials provided!");
+      return;
     }
-    // Dispatch the sign-in action with the form data
+
     await dispatch(signinRequest({ email, password }));
 
-    // Clear form fields
     setEmail("");
     setPassword("");
   };

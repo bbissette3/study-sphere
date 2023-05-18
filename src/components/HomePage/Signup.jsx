@@ -1,31 +1,36 @@
+//react
 import { useState } from "react";
 
-//redux hooks
+//redux
 import { useDispatch } from "react-redux";
-import { signupRequest } from "../../store/actions/signupAction";
+import { signupRequest } from "../../store/auth/actions";
 
 const Signup = ({ handleToggleForm }) => {
   const dispatch = useDispatch();
 
-  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
 
+    if (email === "" || username === "" || password === "") {
+      alert("Please fill in all fields!");
+    }
+
     // Dispatch the sign-up action with the form data
-    dispatch(signupRequest({ username, email, password }));
+    await dispatch(signupRequest({ email, username, password }));
 
     // Clear form fields
-    setUsername("");
     setEmail("");
+    setUsername("");
     setPassword("");
   };
 
   return (
     <>
-      <h2 className="text-2xl font-bold mb-4">Sign up</h2>
+      <h2 className="text-2xl font-bold mb-4">Create an account</h2>
       <form className="flex flex-col gap-4" onSubmit={handleSignup}>
         <input
           type="text"
@@ -35,8 +40,8 @@ const Signup = ({ handleToggleForm }) => {
           className="border rounded p-2"
         />
         <input
-          type="email"
-          placeholder="Email"
+          type="text"
+          placeholder="Email address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="border rounded p-2"
@@ -52,14 +57,14 @@ const Signup = ({ handleToggleForm }) => {
           type="submit"
           className="bg-blue-500 text-white px-4 py-2 rounded"
         >
-          Signup
+          Sign Up
         </button>
       </form>
       <button
         className="bg-red-500 text-white px-4 py-2 rounded mt-4"
         onClick={handleToggleForm}
       >
-        Already have an account? Login
+        Already have an account? Login!
       </button>
     </>
   );

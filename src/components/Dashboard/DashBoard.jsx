@@ -1,19 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
-  const currentUser = useSelector((state) => state.currentUser);
-
-  //   console.log("user", user);
-
-  if (!currentUser.id) {
-    return <p>Loading...</p>;
-  }
+  const user = useSelector((state) => state.auth.user);
 
   return (
-    <div className="bg-blue-400 flex-row text-center ">
-      <h2>Welcome, {currentUser.username}</h2>
-      <p>Email: {currentUser.email}</p>
+    <div>
+      <h1>Dashboard</h1>
+      <h2>Welcome, {user.username}</h2>
     </div>
   );
 };
