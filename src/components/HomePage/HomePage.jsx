@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Login from "./Login";
 import Signup from "./Signup";
+
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
   const [activeForm, setActiveForm] = useState("login");
+
+  const navigate = useNavigate();
 
   const handleToggleModal = () => {
     setShowModal(!showModal);
@@ -14,6 +19,16 @@ const HomePage = () => {
   const handleToggleForm = () => {
     setActiveForm(activeForm === "login" ? "signup" : "login");
   };
+
+  const currentUser = useSelector((state) => {
+    return state.auth.currentUser;
+  });
+
+  useEffect(() => {
+    if (currentUser) {
+      navigate("/dashboard");
+    }
+  }, [currentUser]);
 
   return (
     <div className="bg-blue-950 min-h-screen flex items-center justify-center">
