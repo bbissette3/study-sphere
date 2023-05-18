@@ -29,17 +29,17 @@ const HomePage = () => {
         </div>
       )}
       <div className="text-center">
-        <p className="text-white mb-6">
-          Welcome to our app! We are dedicated to providing a platform that
-          promotes collaborative learning and knowledge sharing. Our app brings
-          together a diverse community of learners, educators, and
-          professionals, enabling them to connect, exchange ideas, and support
-          each other's educational journeys. With a user-friendly interface and
-          a wealth of features, our app offers a seamless learning experience.
-          Discover study groups, join interactive discussions, access a vast
-          library of educational resources, and participate in focused study
-          sessions to enhance your learning outcomes. Join our community today
-          and unlock your full learning potential!
+        <p className="text-white text-lg mb-6 pl-5 pr-5 pb-10">
+          Welcome to Study Sphere! Unlock your full learning potential with our
+          dedicated platform that empowers you to take charge of your
+          educational journey. Connect with a diverse community of learners,
+          educators, and professionals to exchange ideas, collaborate on
+          projects, and support each other's growth. Discover study groups,
+          engage in interactive discussions, access an extensive library of
+          educational resources, and participate in focused study sessions
+          tailored to your needs. Embrace the opportunity to apply yourself,
+          cultivate knowledge, and achieve your learning goals. Join our vibrant
+          community today and embark on an enriching learning experience!
         </p>
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded"
