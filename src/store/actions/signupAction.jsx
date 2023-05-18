@@ -12,7 +12,7 @@ export const signupRequest = (userData) => async (dispatch) => {
   try {
     const response = await axios.post("/api/users/signup", userData);
     dispatch({ type: SIGNUP_SUCCESS });
-    console.log(response.data.message); // User registered successfully!
+    // console.log(response.data.message); // User registered successfully!
   } catch (error) {
     dispatch({ type: SIGNUP_FAILURE, payload: error.message });
   }

@@ -1,30 +1,39 @@
 //react
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 //redux
 import { signinRequest } from "../../store/actions/signinAction";
+import { useSelector } from "react-redux";
 
 const Login = ({ handleToggleForm }) => {
   const dispatch = useDispatch();
-  //const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const currentUser = useSelector((state) => state.currentUser);
+
+  useEffect(() => {
+    if (currentUser.id) {
+      navigate("/dashboard");
+    }
+  }, [currentUser]);
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
+    if (email === "" || password === "") {
+      alert("No credentials provided!");
+    }
     // Dispatch the sign-in action with the form data
     await dispatch(signinRequest({ email, password }));
 
     // Clear form fields
     setEmail("");
     setPassword("");
-
-    // Navigate to the desired location after successful login
-    //navigate("/dashboard");
   };
 
   return (

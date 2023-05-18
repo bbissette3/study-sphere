@@ -8,6 +8,11 @@ const initialState = {
   loading: false,
   error: null,
   token: null,
+  user: {
+    id: null,
+    username: null,
+    email: null,
+  },
 };
 
 const signinReducer = (state = initialState, action) => {
@@ -23,6 +28,11 @@ const signinReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         token: action.payload.accessToken,
+        user: {
+          id: action.payload.id,
+          username: action.payload.username,
+          email: action.payload.email,
+        },
       };
     case SIGNIN_FAILURE:
       return {
