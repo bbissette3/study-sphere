@@ -28,12 +28,26 @@ const HomePage = () => {
           </div>
         </div>
       )}
-      <button
-        className="bg-blue-500 text-white px-4 py-2 rounded"
-        onClick={handleToggleModal}
-      >
-        Login
-      </button>
+      <div className="text-center">
+        <p className="text-white mb-6">
+          Welcome to our app! We are dedicated to providing a platform that
+          promotes collaborative learning and knowledge sharing. Our app brings
+          together a diverse community of learners, educators, and
+          professionals, enabling them to connect, exchange ideas, and support
+          each other's educational journeys. With a user-friendly interface and
+          a wealth of features, our app offers a seamless learning experience.
+          Discover study groups, join interactive discussions, access a vast
+          library of educational resources, and participate in focused study
+          sessions to enhance your learning outcomes. Join our community today
+          and unlock your full learning potential!
+        </p>
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded"
+          onClick={handleToggleModal}
+        >
+          Login
+        </button>
+      </div>
     </div>
   );
 };
