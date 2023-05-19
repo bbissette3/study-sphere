@@ -2,7 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const Dashboard = () => {
-  const currentUser = useSelector((state) => state.auth.currentUser);
+  const currentUser = useSelector((state) => {
+    return state.user.currentUser;
+  });
 
   return (
     <div className="flex flex-col text-center">

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { signinRequest } from "../../store/auth/actions";
+import { signin } from "../../store/slice/userSlice";
 
 const Login = ({ handleToggleForm }) => {
   const dispatch = useDispatch();
@@ -11,10 +11,12 @@ const Login = ({ handleToggleForm }) => {
   const [password, setPassword] = useState("");
 
   const currentUser = useSelector((state) => {
-    return state.auth.currentUser;
+    return state.user.currentUser;
   });
+
   useEffect(() => {
-    if (currentUser) {
+    console.log(currentUser);
+    if (currentUser?.id) {
       navigate("/dashboard");
     }
   }, [currentUser]);
@@ -27,7 +29,7 @@ const Login = ({ handleToggleForm }) => {
       return;
     }
 
-    await dispatch(signinRequest({ email, password }));
+    await dispatch(signin({ email, password }));
 
     setEmail("");
     setPassword("");

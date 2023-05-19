@@ -1,10 +1,11 @@
 import "./index.css";
 import { Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { getCurrentUser } from "./store/auth/actions";
+// import { getCurrentUser } from "./store/auth/actions";
+import { getCurrentUser } from "./store/slice/userSlice";
 
 // Component imports
 import HomePage from "./components/HomePage/HomePage";
@@ -13,11 +14,9 @@ import DashBoard from "./components/Dashboard/DashBoard";
 import ProtectedRoute from "./ProtectedRoute";
 import Navbar from "./components/NavBar";
 
-function App() {
+const App = () => {
   const dispatch = useDispatch();
-  const currentUser = useSelector((state) => {
-    return state.auth.currentUser;
-  });
+  const currentUser = useSelector((state) => state.user.currentUser);
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
@@ -48,6 +47,6 @@ function App() {
       {/* </div> */}
     </>
   );
-}
+};
 
 export default App;
