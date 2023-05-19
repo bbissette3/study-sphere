@@ -29,7 +29,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <Navbar />
+      {currentUser && <Navbar />}
 
       {/* <div className="bg-blue-950 min-h-screen"> */}
       <Routes>

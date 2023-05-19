@@ -1,0 +1,84 @@
+import { useState, useEffect } from "react";
+
+//redux
+import { useDispatch, useSelector } from "react-redux";
+import { editUser } from "../../store/slice/userSlice";
+import { current } from "@reduxjs/toolkit";
+
+const EditUser = ({ onClose }) => {
+  //   const [username, setUsername] = useState("");
+  //   const [email, setEmail] = useState("");
+  //   const [password, setPassword] = useState("");
+
+  const currentUser = useSelector((state) => state.user.currentUser);
+
+  const [username, setUsername] = useState(currentUser.username);
+  const [email, setEmail] = useState(currentUser.email);
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    setUsername(currentUser?.username ?? "");
+    setEmail(currentUser?.email ?? "");
+    setPassword("");
+  }, [currentUser]);
+
+  const dispatch = useDispatch();
+
+  const handleEditUser = (e) => {
+    e.preventDefault();
+    dispatch(editUser({ userId: currentUser.id, username, email, password }));
+  };
+
+  return (
+    <div
+      className="fixed inset-0 flex items-center justify-center z-50"
+      style={{ background: "rgba(0, 0, 0, 0.5)" }}
+    >
+      <div className="bg-white p-6 rounded-lg">
+        <h2 className="text-2xl font-bold mb-4 text-center text-black">
+          Update Profile
+        </h2>
+
+        <form className="flex flex-col gap-4" onSubmit={handleEditUser}>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="border rounded p-2 text-black"
+          />
+          <input
+            type="text"
+            placeholder="Email address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="border rounded p-2  text-black"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="border rounded p-2  text-black"
+          />
+          <button
+            type="submit"
+            className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+          >
+            Update
+          </button>
+        </form>
+        <div className="text-center mt-4">
+          <button
+            className="bg-red-500 text-white px-4 py-2 rounded"
+            onClick={onClose}
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default EditUser;
