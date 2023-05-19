@@ -1,34 +1,55 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 axios.defaults.baseURL = "http://localhost:8888";
 
-export const signupRequest = createAsyncThunk(
+// Sign up
+export const signup = createAsyncThunk(
   "user/signup",
-  async (userData) => {
-    const response = await axios.post("/api/users/signup", userData);
-    return response.data;
+  async ({ username, email, password }) => {
+    try {
+      const response = await axios.post("/api/users/signup", {
+        username,
+        email,
+        password,
+      });
+      localStorage.setItem("accessToken", response.data.accessToken);
+      return response.data.user;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
   }
 );
 
-export const signinRequest = createAsyncThunk(
+// Sign in
+export const signin = createAsyncThunk(
   "user/signin",
-  async (userData) => {
-    const response = await axios.post("/api/users/login", userData);
-    const { accessToken } = response.data;
-    localStorage.setItem("accessToken", accessToken);
-    return response.data;
+  async ({ email, password }) => {
+    try {
+      const response = await axios.post("/api/users/login", {
+        email,
+        password,
+      });
+      localStorage.setItem("accessToken", response.data.accessToken);
+      return response.data.user;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
   }
 );
 
+// Get current user
 export const getCurrentUser = createAsyncThunk(
   "user/getCurrentUser",
   async (token) => {
-    const response = await axios.get("/api/users/verifyToken", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    return response.data;
+    try {
+      const response = await axios.get("/api/users/verifyToken", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
   }
 );
 
@@ -36,35 +57,54 @@ const userSlice = createSlice({
   name: "user",
   initialState: {
     currentUser: null,
-    status: "idle",
+    loading: false,
     error: null,
   },
   reducers: {},
   extraReducers: (builder) => {
+    // Signup reducers
     builder
-      .addCase(signupRequest.pending, (state) => {
-        state.status = "loading";
+      .addCase(signup.pending, (state) => {
+        state.loading = true;
+        state.error = null;
       })
-      .addCase(signupRequest.fulfilled, (state, action) => {
-        state.status = "succeeded";
-      })
-      .addCase(signupRequest.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
-      })
-      .addCase(signinRequest.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(signinRequest.fulfilled, (state, action) => {
-        state.status = "succeeded";
+      .addCase(signup.fulfilled, (state, action) => {
+        state.loading = false;
         state.currentUser = action.payload;
       })
-      .addCase(signinRequest.rejected, (state, action) => {
-        state.status = "failed";
+      .addCase(signup.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.error.message;
+      });
+
+    // Signin reducers
+    builder
+      .addCase(signin.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(signin.fulfilled, (state, action) => {
+        state.loading = false;
+        state.currentUser = action.payload;
+      })
+      .addCase(signin.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
+
+    // Get current user reducer
+    builder
+      .addCase(getCurrentUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
       })
       .addCase(getCurrentUser.fulfilled, (state, action) => {
+        state.loading = false;
         state.currentUser = action.payload;
+      })
+      .addCase(getCurrentUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
       });
   },
 });

@@ -3,7 +3,9 @@ import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
-  const currentUser = useSelector((state) => state.auth.currentUser);
+  const currentUser = useSelector((state) => {
+    return state.user.currentUser;
+  });
   const location = useLocation();
 
   if (!currentUser?.id) {

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Login from "./Login";
 import Signup from "./Signup";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
@@ -10,6 +10,7 @@ const HomePage = () => {
   const [activeForm, setActiveForm] = useState("login");
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleToggleModal = () => {
     setShowModal(!showModal);
@@ -21,7 +22,7 @@ const HomePage = () => {
   };
 
   const currentUser = useSelector((state) => {
-    return state.auth.currentUser;
+    return state.user.currentUser;
   });
 
   useEffect(() => {

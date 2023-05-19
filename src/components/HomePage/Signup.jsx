@@ -3,7 +3,7 @@ import { useState } from "react";
 
 //redux
 import { useDispatch } from "react-redux";
-import { signupRequest } from "../../store/auth/actions";
+import { signup } from "../../store/slice/userSlice";
 
 const Signup = ({ handleToggleForm }) => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const Signup = ({ handleToggleForm }) => {
     }
 
     // Dispatch the sign-up action with the form data
-    await dispatch(signupRequest({ email, username, password }));
+    await dispatch(signup({ email, username, password }));
 
     // Clear form fields
     setEmail("");

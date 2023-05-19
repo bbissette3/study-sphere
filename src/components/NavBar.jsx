@@ -21,6 +21,9 @@ const Navbar = () => {
         <button className="p-5 text-white hover:bg-blue-700 rounded">
           Delete Profile
         </button>
+        <button className="p-5 text-white hover:bg-blue-700 rounded">
+          Log Out
+        </button>
       </div>
     </div>
   );
