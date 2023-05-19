@@ -5,9 +5,8 @@ const Dashboard = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
 
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <h2>Welcome, {currentUser.username}</h2>
+    <div className="flex flex-col text-center">
+      <h2>{currentUser.username}'s Dash Board</h2>
     </div>
   );
 };

@@ -2,8 +2,6 @@ import "./index.css";
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 
-import axios from "axios";
-
 // Redux
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentUser } from "./store/auth/actions";
@@ -13,6 +11,7 @@ import HomePage from "./components/HomePage/HomePage";
 import Header from "./components/Header";
 import DashBoard from "./components/Dashboard/DashBoard";
 import ProtectedRoute from "./ProtectedRoute";
+import Navbar from "./components/NavBar";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,8 +29,11 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="bg-blue-950 min-h-screen">
+    <>
       <Header />
+      <Navbar />
+
+      {/* <div className="bg-blue-950 min-h-screen"> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route
@@ -43,7 +45,8 @@ function App() {
           }
         />
       </Routes>
-    </div>
+      {/* </div> */}
+    </>
   );
 }
 
