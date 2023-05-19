@@ -11,8 +11,8 @@ import { getCurrentUser } from "./store/slice/userSlice";
 import HomePage from "./components/HomePage/HomePage";
 import Header from "./components/Header";
 import DashBoard from "./components/Dashboard/DashBoard";
-import ProtectedRoute from "./ProtectedRoute";
-import Navbar from "./components/NavBar";
+import ProtectedRoute from "./store/Utility/ProtectedRoute";
+import Navbar from "./components/NavBar/NavBar";
 
 const App = () => {
   const dispatch = useDispatch();
