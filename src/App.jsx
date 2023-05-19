@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-// import { getCurrentUser } from "./store/auth/actions";
 import { getCurrentUser } from "./store/slice/userSlice";
 
 // Component imports

@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
+
+//sub components
 import Login from "./Login";
 import Signup from "./Signup";
 
+//redux
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
