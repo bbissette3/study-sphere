@@ -1,15 +1,30 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import { useState } from "react";
+import AddTopic from "./AddTopic";
 
 const Dashboard = () => {
-  const currentUser = useSelector((state) => {
-    return state.user.currentUser;
-  });
+  const [showAddTopicModal, setShowAddTopicModal] = useState(false);
+
+  const handleToggleAddTopicModal = () => {
+    setShowAddTopicModal(!showAddTopicModal);
+  };
 
   return (
-    <div className="flex flex-col text-center">
-      <h2>{currentUser.username}'s Dash Board</h2>
-    </div>
+    <>
+      <button
+        className="bg-blue-500 text-white px-4 py-2 rounded mt-5 mx-auto block"
+        onClick={handleToggleAddTopicModal}
+      >
+        Add Topic
+      </button>
+
+      {showAddTopicModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 p-6">
+          <div className="bg-blue-300 rounded-lg shadow-lg">
+            <AddTopic handleToggleForm={handleToggleAddTopicModal} />
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

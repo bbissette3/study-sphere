@@ -30,8 +30,6 @@ const App = () => {
     <>
       <Header />
       {currentUser && <Navbar />}
-
-      {/* <div className="bg-blue-950 min-h-screen"> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route
@@ -43,7 +41,6 @@ const App = () => {
           }
         />
       </Routes>
-      {/* </div> */}
     </>
   );
 };

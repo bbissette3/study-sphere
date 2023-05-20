@@ -26,6 +26,7 @@ const Signup = ({ handleToggleForm }) => {
     setEmail("");
     setUsername("");
     setPassword("");
+    alert("Account has been created");
   };
 
   return (
