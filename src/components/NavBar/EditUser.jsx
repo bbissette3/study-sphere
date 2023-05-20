@@ -1,32 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { editUser } from "../../store/slice/userSlice";
-import { current } from "@reduxjs/toolkit";
 
 const EditUser = ({ onClose }) => {
-  //   const [username, setUsername] = useState("");
-  //   const [email, setEmail] = useState("");
-  //   const [password, setPassword] = useState("");
-
+  const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
 
-  const [username, setUsername] = useState(currentUser.username);
-  const [email, setEmail] = useState(currentUser.email);
+  const [username, setUsername] = useState(currentUser?.username);
+  const [email, setEmail] = useState(currentUser?.email);
   const [password, setPassword] = useState("");
-
-  useEffect(() => {
-    setUsername(currentUser?.username ?? "");
-    setEmail(currentUser?.email ?? "");
-    setPassword("");
-  }, [currentUser]);
-
-  const dispatch = useDispatch();
 
   const handleEditUser = (e) => {
     e.preventDefault();
     dispatch(editUser({ userId: currentUser.id, username, email, password }));
+    window.location.reload();
   };
 
   return (

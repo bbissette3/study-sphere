@@ -92,6 +92,15 @@ export const deleteUser = createAsyncThunk(
   }
 );
 
+export const logout = createAsyncThunk("user/logout", async () => {
+  try {
+    localStorage.removeItem("accessToken");
+    return null;
+  } catch (error) {
+    throw new Error("Could not logout");
+  }
+});
+
 const userSlice = createSlice({
   name: "user",
   initialState: {
@@ -165,11 +174,15 @@ const userSlice = createSlice({
       })
       .addCase(deleteUser.fulfilled, (state) => {
         state.loading = false;
-        state.currentUser = null; // set currentUser to null since the user is now deleted
+        state.currentUser = null;
       })
       .addCase(deleteUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
+      })
+      // Logout user
+      .addCase(logout.fulfilled, (state) => {
+        state.currentUser = null;
       });
   },
 });

@@ -35,6 +35,7 @@ const Login = ({ handleToggleForm }) => {
 
     setEmail("");
     setPassword("");
+    window.location.reload();
   };
 
   return (
