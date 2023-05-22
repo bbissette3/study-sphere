@@ -20,6 +20,17 @@ export const fetchTopics = createAsyncThunk(
   }
 );
 
+export const fetchUserTopics = createAsyncThunk(
+  "topics/fetchUserTopics",
+  async (_, thunkAPI) => {
+    const accessToken = localStorage.getItem("accessToken");
+    const response = await axios.get("/api/topics", {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+    return response.data;
+  }
+);
+
 export const addTopic = createAsyncThunk(
   "topics/addTopic",
   async ({ title, subject, description }) => {
@@ -31,7 +42,7 @@ export const addTopic = createAsyncThunk(
         headers: { Authorization: `Bearer ${accessToken}` },
       }
     );
-    return response.data;
+    return response.data.topic;
   }
 );
 
@@ -63,6 +74,7 @@ const topicSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      //all topics
       .addCase(fetchTopics.pending, (state) => {
         state.status = "loading";
       })
@@ -74,9 +86,23 @@ const topicSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
+      //user topics
+      .addCase(fetchUserTopics.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchUserTopics.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.topics = action.payload;
+      })
+      .addCase(fetchUserTopics.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      //add topic
       .addCase(addTopic.fulfilled, (state, action) => {
         state.topics.push(action.payload);
       })
+      //update topic
       .addCase(updateTopic.fulfilled, (state, action) => {
         const index = state.topics.findIndex(
           (topic) => topic.id === action.payload.id
@@ -85,6 +111,7 @@ const topicSlice = createSlice({
           state.topics[index] = action.payload;
         }
       })
+      //delete topic
       .addCase(deleteTopic.fulfilled, (state, action) => {
         state.topics = state.topics.filter(
           (topic) => topic.id !== action.payload.id

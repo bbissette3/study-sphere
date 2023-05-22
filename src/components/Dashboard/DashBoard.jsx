@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 //redux
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTopics } from "../../store/slice/topicSlice";
+import { fetchUserTopics } from "../../store/slice/topicSlice";
 
 //sub component
 import AddTopic from "./AddTopic";
@@ -14,7 +14,7 @@ const Dashboard = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchTopics());
+    dispatch(fetchUserTopics());
   }, [dispatch]);
 
   const handleToggleAddTopicModal = () => {
