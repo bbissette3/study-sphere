@@ -24,7 +24,7 @@ export const fetchUserTopics = createAsyncThunk(
   "topics/fetchUserTopics",
   async (_, thunkAPI) => {
     const accessToken = localStorage.getItem("accessToken");
-    const response = await axios.get("/api/topics", {
+    const response = await axios.get("/api/topics/user", {
       headers: { Authorization: `Bearer ${accessToken}` },
     });
     return response.data;
