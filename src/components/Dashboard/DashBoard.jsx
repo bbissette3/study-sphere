@@ -33,7 +33,7 @@ const Dashboard = () => {
         </button>
 
         {showAddTopicModal && (
-          <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 p-6">
+          <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 p-6 z-50">
             <div className="bg-blue-300 rounded-lg shadow-lg">
               <AddTopic handleToggleForm={handleToggleAddTopicModal} />
             </div>
