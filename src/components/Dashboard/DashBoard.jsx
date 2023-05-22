@@ -23,7 +23,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="pl-64 pr-5">
+      <div className="pl-64 pr-5 ">
         <h1 className="text-4xl font-bold text-center">My Study Topics!</h1>
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded mt-5 mb-5 mx-auto block"

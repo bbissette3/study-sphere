@@ -19,52 +19,47 @@ const EditUser = ({ onClose }) => {
   };
 
   return (
-    <div
-      className="fixed inset-0 flex items-center justify-center z-50"
-      style={{ background: "rgba(0, 0, 0, 0.5)" }}
-    >
-      <div className="bg-white p-6 rounded-lg">
-        <h2 className="text-2xl font-bold mb-4 text-center text-black">
-          Update Profile
-        </h2>
+    <div className="bg-blue-300 rounded-lg shadow-lg p-6">
+      <h2 className="text-2xl font-bold mb-4 text-center text-black">
+        Update Profile
+      </h2>
 
-        <form className="flex flex-col gap-4" onSubmit={handleEditUser}>
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className="border rounded p-2 text-black"
-          />
-          <input
-            type="text"
-            placeholder="Email address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="border rounded p-2  text-black"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="border rounded p-2  text-black"
-          />
-          <button
-            type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
-          >
-            Update
-          </button>
-        </form>
-        <div className="text-center mt-4">
-          <button
-            className="bg-red-500 text-white px-4 py-2 rounded"
-            onClick={onClose}
-          >
-            Close
-          </button>
-        </div>
+      <form className="flex flex-col gap-4" onSubmit={handleEditUser}>
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className="border rounded p-2 text-black"
+        />
+        <input
+          type="text"
+          placeholder="Email address"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="border rounded p-2  text-black"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="border rounded p-2  text-black"
+        />
+        <button
+          type="submit"
+          className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+        >
+          Update
+        </button>
+      </form>
+      <div className="text-center mt-4">
+        <button
+          className="bg-red-500 text-white px-4 py-2 rounded"
+          onClick={onClose}
+        >
+          Close
+        </button>
       </div>
     </div>
   );

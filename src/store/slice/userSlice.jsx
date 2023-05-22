@@ -123,10 +123,10 @@ const userSlice = createSlice({
       .addCase(signup.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
-      });
+      })
 
-    // Signin reducers
-    builder
+      // Signin reducers
+      // builder
       .addCase(signin.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -138,10 +138,10 @@ const userSlice = createSlice({
       .addCase(signin.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
-      });
+      })
 
-    // Get current user reducer
-    builder
+      // Get current user reducer
+      // builder
       .addCase(getCurrentUser.pending, (state) => {
         state.loading = true;
         state.error = null;

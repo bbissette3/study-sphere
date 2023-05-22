@@ -44,7 +44,11 @@ const Navbar = () => {
         >
           Edit Profile
         </button>
-        {showEditUser && <EditUser onClose={() => setShowEditUser(false)} />}
+        {showEditUser && (
+          <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 p-6 z-50">
+            <EditUser onClose={() => setShowEditUser(false)} />
+          </div>
+        )}
         <button
           className="p-5 text-white hover:bg-blue-700 rounded"
           onClick={() => setShowDeleteUser(true)}
@@ -52,7 +56,9 @@ const Navbar = () => {
           Delete Profile
         </button>
         {showDeleteUser && (
-          <DeleteUser onClose={() => setShowDeleteUser(false)} />
+          <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
+            <DeleteUser onClose={() => setShowDeleteUser(false)} />
+          </div>
         )}
         <button
           className="p-5 text-white hover:bg-blue-700 rounded"
