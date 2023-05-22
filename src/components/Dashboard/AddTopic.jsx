@@ -14,14 +14,12 @@ const AddTopic = ({ handleToggleForm }) => {
 
     if (title === "" || subject === "" || description === "") {
       alert("Please fill in all fields!");
-      return;
     }
 
     await dispatch(addTopic({ title, subject, description }));
     setTitle("");
     setSubject("");
     setDescription("");
-    alert("Topic has been created");
     handleToggleForm();
   };
 

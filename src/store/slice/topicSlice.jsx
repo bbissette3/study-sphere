@@ -1,4 +1,3 @@
-// Inside topicSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -13,7 +12,7 @@ const initialState = {
 export const fetchTopics = createAsyncThunk(
   "topics/fetchTopics",
   async (_, thunkAPI) => {
-    const accessToken = thunkAPI.getState().user.accessToken;
+    const accessToken = localStorage.getItem("accessToken");
     const response = await axios.get("/api/topics", {
       headers: { Authorization: `Bearer ${accessToken}` },
     });
@@ -23,20 +22,24 @@ export const fetchTopics = createAsyncThunk(
 
 export const addTopic = createAsyncThunk(
   "topics/addTopic",
-  async (newTopicData, thunkAPI) => {
-    const accessToken = thunkAPI.getState().user.accessToken;
-    const response = await axios.post("/api/topics", newTopicData, {
-      headers: { Authorization: `Bearer ${accessToken}` },
-    });
+  async ({ title, subject, description }) => {
+    const accessToken = localStorage.getItem("accessToken");
+    const response = await axios.post(
+      "/api/topics",
+      { title, subject, description },
+      {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      }
+    );
     return response.data;
   }
 );
 
 export const updateTopic = createAsyncThunk(
   "topics/updateTopic",
-  async (topicData, thunkAPI) => {
-    const accessToken = thunkAPI.getState().user.accessToken;
-    const response = await axios.put(`/api/topics/${topicData.id}`, topicData, {
+  async ({ id, ...topicData }) => {
+    const accessToken = localStorage.getItem("accessToken");
+    const response = await axios.put(`/api/topics/${id}`, topicData, {
       headers: { Authorization: `Bearer ${accessToken}` },
     });
     return response.data;
@@ -45,9 +48,9 @@ export const updateTopic = createAsyncThunk(
 
 export const deleteTopic = createAsyncThunk(
   "topics/deleteTopic",
-  async (topicId, thunkAPI) => {
-    const accessToken = thunkAPI.getState().user.accessToken;
-    const response = await axios.delete(`/api/topics/${topicId}`, {
+  async (id) => {
+    const accessToken = localStorage.getItem("accessToken");
+    const response = await axios.delete(`/api/topics/${id}`, {
       headers: { Authorization: `Bearer ${accessToken}` },
     });
     return response.data;
