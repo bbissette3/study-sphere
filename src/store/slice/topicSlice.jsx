@@ -5,6 +5,7 @@ axios.defaults.baseURL = "http://localhost:8888";
 
 const initialState = {
   topics: [],
+  selectedTopic: null,
   status: "idle",
   error: null,
 };
@@ -25,6 +26,17 @@ export const fetchUserTopics = createAsyncThunk(
   async (_, thunkAPI) => {
     const accessToken = localStorage.getItem("accessToken");
     const response = await axios.get("/api/topics/user", {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+    return response.data;
+  }
+);
+
+export const fetchTopicById = createAsyncThunk(
+  "topics/fetchTopicById",
+  async (id, thunkAPI) => {
+    const accessToken = localStorage.getItem("accessToken");
+    const response = await axios.get(`/api/topics/${id}`, {
       headers: { Authorization: `Bearer ${accessToken}` },
     });
     return response.data;
@@ -98,6 +110,19 @@ const topicSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
+      //topics by id
+      .addCase(fetchTopicById.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchTopicById.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.selectedTopic = action.payload;
+      })
+      .addCase(fetchTopicById.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+
       //add topic
       .addCase(addTopic.fulfilled, (state, action) => {
         state.topics.push(action.payload);

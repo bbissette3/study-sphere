@@ -9,9 +9,10 @@ import { getCurrentUser } from "./store/slice/userSlice";
 // Component imports
 import HomePage from "./components/HomePage/HomePage";
 import Header from "./components/Header";
-import DashBoard from "./components/Dashboard/DashBoard";
 import ProtectedRoute from "./store/Utility/ProtectedRoute";
+import DashBoard from "./components/Dashboard/DashBoard";
 import Navbar from "./components/NavBar/NavBar";
+import TopicDetails from "./components/TopicDetails/TopicDetails";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <DashBoard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/topics/:id"
+          element={
+            <ProtectedRoute>
+              <TopicDetails />
             </ProtectedRoute>
           }
         />
