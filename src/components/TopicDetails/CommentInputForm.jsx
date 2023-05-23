@@ -1,12 +1,25 @@
 import { useState } from "react";
 
-const CommentInputForm = ({ onSubmit }) => {
+//redux
+import { useSelector, useDispatch } from "react-redux";
+import { createComment } from "../../store/slice/commentSlice";
+
+const CommentInputForm = ({ topicId }) => {
   const [comment, setComment] = useState("");
+  const dispatch = useDispatch();
+
+  const currentUser = useSelector((state) => {
+    return state.user.currentUser;
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(comment);
-    setComment("");
+    if (currentUser) {
+      dispatch(
+        createComment({ text: comment, userId: currentUser.id, topicId })
+      );
+      setComment("");
+    }
   };
 
   return (

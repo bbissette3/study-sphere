@@ -29,7 +29,10 @@ const Navbar = () => {
     <div className="container">
       <div className=" w-[225px] bg-gray-900 h-screen fixed flex flex-col justify-start py-4 px-8 text-white">
         <h2 className="text-center text-2xl">{currentUser.username}</h2>
-        <NavLink className="p-5 text-white text-center hover:bg-blue-700 rounded">
+        <NavLink
+          className="p-5 text-white text-center hover:bg-blue-700 rounded"
+          to="/dashboard"
+        >
           Dash Board
         </NavLink>
         <NavLink className="p-5 text-white text-center hover:bg-blue-700 rounded">
