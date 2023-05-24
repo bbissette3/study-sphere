@@ -34,8 +34,10 @@ const TopicDetails = () => {
         <h1 className="text-2xl font-bold text-center pr-8 mb-4">
           {topic && topic.title}
         </h1>
-        <div className="flex flex-col md:flex-row md:items-start justify-center md:space-x-8">
+        <div className="flex flex-col md:flex-row md:items-stretch justify-center md:space-x-8">
           <div className="w-full md:w-1/2 pr-2 border-r-2 border-gray-200">
+            <h2 className="text-lg font-bold mb-2 text-center">Subject</h2>
+            <p className="mb-4 text-center">{topic && topic.subject}</p>
             <h2 className="text-lg font-bold mb-2 text-center">Description</h2>
             <p className="mb-4 text-center">{topic && topic.description}</p>
           </div>
