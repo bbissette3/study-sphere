@@ -43,7 +43,9 @@ const TopicDetails = () => {
             <ResourcesList resources={topic.resources} />
           )}
         </div>
-        {topic && topic.comments && <CommentsList comments={topic.comments} />}
+        {topic && topic.comments && (
+          <CommentsList comments={topic.comments} topicId={id} />
+        )}
         <CommentInputForm topicId={id} />
       </div>
     </div>
