@@ -25,7 +25,7 @@ const AddTopic = ({ handleToggleForm }) => {
 
   return (
     <>
-      <div className="bg-blue-300 rounded-lg shadow-lg p-6">
+      <div className="bg-blue-300 rounded-lg shadow-lg p-10 w-full">
         <h2 className="text-2xl font-bold mb-4">Create a new topic</h2>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <input
@@ -46,7 +46,7 @@ const AddTopic = ({ handleToggleForm }) => {
             placeholder="Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="border-2 rounded px-3 py-2"
+            className="border-2 rounded px-3 py-2 h-32" // Add a height here
           />
           <button
             type="submit"

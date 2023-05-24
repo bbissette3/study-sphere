@@ -40,7 +40,7 @@ const TopicDetails = () => {
             <p className="mb-4 text-center">{topic && topic.description}</p>
           </div>
           {topic && topic.resources && (
-            <ResourcesList resources={topic.resources} />
+            <ResourcesList resources={topic.resources} topicId={id} />
           )}
         </div>
         {topic && topic.comments && (
