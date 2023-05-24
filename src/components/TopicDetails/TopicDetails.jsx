@@ -10,6 +10,7 @@ import { fetchTopicById } from "../../store/slice/topicSlice";
 import ResourcesList from "./ResourcesList";
 import CommentsList from "./CommentsList";
 import CommentInputForm from "./CommentInputForm";
+import SubscriptionButton from "./SubScriptionButton";
 
 const TopicDetails = () => {
   const { id } = useParams();
@@ -25,12 +26,15 @@ const TopicDetails = () => {
   return (
     <div className="container mx-auto py-10 pl-64 pr-8">
       <div className="bg-gray-500 p-8">
-        <button
-          onClick={() => navigate(-1)}
-          className="mb-4 flex items-center text-black"
-        >
-          <IoIosArrowBack size={24} className="mr-2" />
-        </button>
+        <div className="flex justify-between">
+          <button
+            onClick={() => navigate(-1)}
+            className="mb-4 flex items-center text-black"
+          >
+            <IoIosArrowBack size={24} className="mr-2" />
+          </button>
+          {topic && <SubscriptionButton topicId={topic.id} />}
+        </div>
         <h1 className="text-2xl font-bold text-center pr-8 mb-4">
           {topic && topic.title}
         </h1>

@@ -4,6 +4,7 @@ import userReducer from "./slice/userSlice";
 import topicReducer from "./slice/topicSlice";
 import commentReducer from "./slice/commentSlice";
 import resourceReducer from "./slice/resourceSlice";
+import userTopicReducer from "./slice/userTopicSlice";
 
 export default configureStore({
   reducer: {
@@ -11,5 +12,6 @@ export default configureStore({
     topics: topicReducer,
     comments: commentReducer,
     resources: resourceReducer,
+    userTopic: userTopicReducer,
   },
 });
