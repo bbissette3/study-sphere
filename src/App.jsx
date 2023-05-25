@@ -13,6 +13,7 @@ import ProtectedRoute from "./store/Utility/ProtectedRoute";
 import DashBoard from "./components/Dashboard/DashBoard";
 import Navbar from "./components/NavBar/NavBar";
 import TopicDetails from "./components/TopicDetails/TopicDetails";
+import Forum from "./components/Forums/Forum";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -46,6 +47,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <TopicDetails />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/forum"
+          element={
+            <ProtectedRoute>
+              <Forum />
             </ProtectedRoute>
           }
         />

@@ -38,7 +38,10 @@ const Navbar = () => {
         <NavLink className="p-5 text-white text-center hover:bg-blue-700 rounded">
           Focus Session
         </NavLink>
-        <NavLink className="p-5 text-white text-center hover:bg-blue-700 rounded">
+        <NavLink
+          className="p-5 text-white text-center hover:bg-blue-700 rounded"
+          to="/forum"
+        >
           Forums
         </NavLink>
         <button
