@@ -17,7 +17,6 @@ const Login = ({ handleToggleForm }) => {
   });
 
   useEffect(() => {
-    console.log(currentUser);
     if (currentUser?.id) {
       navigate("/dashboard");
     }

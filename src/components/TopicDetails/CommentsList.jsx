@@ -1,5 +1,4 @@
 import { format } from "date-fns";
-import { BsTrash } from "react-icons/bs";
 
 //redux
 import { useSelector } from "react-redux";
@@ -30,7 +29,7 @@ const CommentsList = ({ comments, topicId }) => {
           </div>
           {comment.userId === currentUser.id && (
             <div>
-              <EditComment comment={comment} />
+              <EditComment comment={comment} topicId={topicId} />
               <DeleteComment commentId={comment.id} topicId={topicId} />
             </div>
           )}

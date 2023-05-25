@@ -4,7 +4,6 @@ import { BsPencilSquare } from "react-icons/bs";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { updateComment } from "../../store/slice/commentSlice";
-import topicSlice from "../../store/slice/topicSlice";
 
 const EditComment = ({ comment, topicId }) => {
   const [isEditing, setIsEditing] = useState(false);

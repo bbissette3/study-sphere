@@ -17,7 +17,7 @@ const HomePage = () => {
 
   const handleToggleModal = () => {
     setShowModal(!showModal);
-    setActiveForm("login"); // Reset active form to login when opening the modal
+    setActiveForm("login");
   };
 
   const handleToggleForm = () => {
