@@ -33,7 +33,7 @@ const Forum = () => {
       </h1>
       <div className="flex justify-center mb-4">
         <input
-          type="text"
+          type="search"
           placeholder="Search for a topic..."
           onChange={(e) => setSearchTerm(e.target.value)}
           className="mb-4 w-full lg:w-1/2 xl:w-1/3 h-10 px-3 mx-auto rounded-full border-2 border-gray-300"
