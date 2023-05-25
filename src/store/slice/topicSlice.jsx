@@ -32,6 +32,17 @@ export const fetchUserTopics = createAsyncThunk(
   }
 );
 
+export const fetchUserSubscribedTopics = createAsyncThunk(
+  "topics/fetchUserSubscribedTopics",
+  async (_, thunkAPI) => {
+    const accessToken = localStorage.getItem("accessToken");
+    const response = await axios.get("/api/topics/user/subscribed", {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+    return response.data;
+  }
+);
+
 export const fetchTopicById = createAsyncThunk(
   "topics/fetchTopicById",
   async (id, thunkAPI) => {
@@ -107,6 +118,18 @@ const topicSlice = createSlice({
         state.topics = action.payload;
       })
       .addCase(fetchUserTopics.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      //subscribed topics
+      .addCase(fetchUserSubscribedTopics.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchUserSubscribedTopics.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.topics = action.payload;
+      })
+      .addCase(fetchUserSubscribedTopics.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       })

@@ -5,7 +5,6 @@ import {
   addUserToTopic,
   removeUserFromTopic,
 } from "../../store/slice/userTopicSlice";
-import { fetchUserTopics } from "../../store/slice/topicSlice";
 
 const SubscriptionButton = ({ topicId }) => {
   const dispatch = useDispatch();
