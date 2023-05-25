@@ -12,10 +12,12 @@ const initialState = {
 
 export const fetchTopics = createAsyncThunk(
   "topics/fetchTopics",
-  async (_, thunkAPI) => {
+  async (searchTerm) => {
     const accessToken = localStorage.getItem("accessToken");
+    const params = searchTerm ? { searchTerm: searchTerm.toLowerCase() } : {};
     const response = await axios.get("/api/topics", {
       headers: { Authorization: `Bearer ${accessToken}` },
+      params: params,
     });
     return response.data;
   }
@@ -23,10 +25,12 @@ export const fetchTopics = createAsyncThunk(
 
 export const fetchUserTopics = createAsyncThunk(
   "topics/fetchUserTopics",
-  async (_, thunkAPI) => {
+  async (searchTerm) => {
     const accessToken = localStorage.getItem("accessToken");
+    const params = searchTerm ? { searchTerm: searchTerm.toLowerCase() } : {};
     const response = await axios.get("/api/topics/user", {
       headers: { Authorization: `Bearer ${accessToken}` },
+      params: params,
     });
     return response.data;
   }
@@ -34,10 +38,12 @@ export const fetchUserTopics = createAsyncThunk(
 
 export const fetchUserSubscribedTopics = createAsyncThunk(
   "topics/fetchUserSubscribedTopics",
-  async (_, thunkAPI) => {
+  async (searchTerm) => {
     const accessToken = localStorage.getItem("accessToken");
+    const params = searchTerm ? { searchTerm: searchTerm.toLowerCase() } : {};
     const response = await axios.get("/api/topics/user/subscribed", {
       headers: { Authorization: `Bearer ${accessToken}` },
+      params: params,
     });
     return response.data;
   }
@@ -45,7 +51,7 @@ export const fetchUserSubscribedTopics = createAsyncThunk(
 
 export const fetchTopicById = createAsyncThunk(
   "topics/fetchTopicById",
-  async (id, thunkAPI) => {
+  async (id) => {
     const accessToken = localStorage.getItem("accessToken");
     const response = await axios.get(`/api/topics/${id}`, {
       headers: { Authorization: `Bearer ${accessToken}` },

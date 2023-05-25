@@ -48,7 +48,7 @@ const EditComment = ({ comment, topicId }) => {
       />
       {isEditing && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
-          <div className="bg-white p-4 rounded w-1/2 h-1/2">
+          <div className="bg-white p-4 rounded w-1/2 h-1/4">
             <h2 className="text-2xl font-bold mb-4">Edit Comment</h2>
             <textarea
               value={editedText}
