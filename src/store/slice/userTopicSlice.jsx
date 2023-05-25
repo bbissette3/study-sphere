@@ -60,6 +60,7 @@ const userTopicSlice = createSlice({
     topics: [],
     loading: false,
     error: null,
+    subscriptionStatus: {},
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -100,8 +101,10 @@ const userTopicSlice = createSlice({
       })
       .addCase(checkUserSubscription.fulfilled, (state, action) => {
         state.loading = false;
-        state.subscriptionStatus = action.payload;
+        state.subscriptionStatus[action.payload.topicId] =
+          action.payload.isSubscribed;
       })
+
       .addCase(checkUserSubscription.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
