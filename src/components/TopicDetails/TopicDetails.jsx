@@ -18,10 +18,13 @@ const TopicDetails = () => {
   const navigate = useNavigate();
 
   const topic = useSelector((state) => state.topics.selectedTopic);
+  const currentUserId = useSelector((state) => state.user.currentUser.id);
 
   useEffect(() => {
     dispatch(fetchTopicById(id));
   }, [dispatch, id]);
+
+  const isCurrentUserTopicCreator = topic && topic.userId === currentUserId;
 
   return (
     <div className="container mx-auto py-10 pl-64 pr-8">
@@ -33,7 +36,9 @@ const TopicDetails = () => {
           >
             <IoIosArrowBack size={24} className="mr-2" />
           </button>
-          {topic && <SubscriptionButton topicId={topic.id} />}
+          {topic && !isCurrentUserTopicCreator && (
+            <SubscriptionButton topicId={topic.id} />
+          )}
         </div>
         <h1 className="text-2xl font-bold text-center pr-8 mb-4">
           {topic && topic.title}
