@@ -9,6 +9,12 @@ const AddTopic = ({ handleToggleForm }) => {
 
   const dispatch = useDispatch();
 
+  function toTitleCase(str) {
+    return str.replace(/\w\S*/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -16,7 +22,9 @@ const AddTopic = ({ handleToggleForm }) => {
       alert("Please fill in all fields!");
     }
 
-    await dispatch(addTopic({ title, subject, description }));
+    await dispatch(
+      addTopic({ title: toTitleCase(title), subject, description })
+    );
     dispatch(fetchUserTopics());
     setTitle("");
     setSubject("");
