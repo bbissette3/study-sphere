@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTopic } from "../../store/slice/topicSlice";
+import { addTopic, fetchUserTopics } from "../../store/slice/topicSlice";
 
 const AddTopic = ({ handleToggleForm }) => {
   const [title, setTitle] = useState("");
@@ -17,6 +17,7 @@ const AddTopic = ({ handleToggleForm }) => {
     }
 
     await dispatch(addTopic({ title, subject, description }));
+    dispatch(fetchUserTopics());
     setTitle("");
     setSubject("");
     setDescription("");
