@@ -35,7 +35,10 @@ const Navbar = () => {
         >
           Dash Board
         </NavLink>
-        <NavLink className="p-5 text-white text-center hover:bg-blue-700 rounded">
+        <NavLink
+          className="p-5 text-white text-center hover:bg-blue-700 rounded"
+          to="/focusSessions"
+        >
           Focus Session
         </NavLink>
         <NavLink

@@ -99,7 +99,11 @@ export const deleteTopic = createAsyncThunk(
 
 const topicSlice = createSlice({
   name: "topics",
-  initialState,
+  initialState: {
+    ...initialState,
+    userTopics: [],
+    userSubscribedTopics: [],
+  },
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -121,7 +125,7 @@ const topicSlice = createSlice({
       })
       .addCase(fetchUserTopics.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.topics = action.payload;
+        state.userTopics = action.payload;
       })
       .addCase(fetchUserTopics.rejected, (state, action) => {
         state.status = "failed";
@@ -133,7 +137,7 @@ const topicSlice = createSlice({
       })
       .addCase(fetchUserSubscribedTopics.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.topics = action.payload;
+        state.userSubscribedTopics = action.payload;
       })
       .addCase(fetchUserSubscribedTopics.rejected, (state, action) => {
         state.status = "failed";

@@ -14,6 +14,7 @@ import DashBoard from "./components/Dashboard/DashBoard";
 import Navbar from "./components/NavBar/NavBar";
 import TopicDetails from "./components/TopicDetails/TopicDetails";
 import Forum from "./components/Forums/Forum";
+import FocusSession from "./components/FocusSession/FocusSession";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -55,6 +56,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <Forum />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/focusSessions"
+          element={
+            <ProtectedRoute>
+              <FocusSession />
             </ProtectedRoute>
           }
         />
