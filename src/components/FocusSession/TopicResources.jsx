@@ -13,7 +13,7 @@ const TopicResources = ({ selectedTopic }) => {
 
   return (
     <div className="resource-list">
-      <h3>Resources for Selected Topic</h3>
+      <h3 className="pb-4">Resources for Selected Topic</h3>
       {resources.map((resource) => (
         <div key={resource.id}>
           <a
