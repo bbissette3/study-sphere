@@ -1,8 +1,20 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-const AddFocusSession = () => {
+//redux
+import { useSelector, useDispatch } from "react-redux";
+import { addFocusSession } from "../../store/slice/focusSessionSlice";
+
+const AddFocusSession = ({
+  selectedTopic,
+  setShowAddSession,
+  timerDuration,
+}) => {
   const [learned, setLearned] = useState("");
   const [toLearn, setToLearn] = useState("");
+
+  const dispatch = useDispatch();
+
+  const currentUser = useSelector((state) => state.user.currentUser);
 
   const handleLearnedChange = (e) => {
     setLearned(e.target.value);
@@ -14,6 +26,20 @@ const AddFocusSession = () => {
 
   const handleSubmitFocusSession = (e) => {
     e.preventDefault();
+
+    dispatch(
+      addFocusSession({
+        userId: currentUser.id,
+        topicId: selectedTopic.id,
+        learned,
+        toLearn,
+        duration: timerDuration,
+      })
+    );
+
+    setLearned("");
+    setToLearn("");
+    setShowAddSession(false);
   };
 
   return (

@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+axios.defaults.baseURL = "http://localhost:8888";
+
 // Async action to fetch all focus sessions
 export const fetchUserFocusSessions = createAsyncThunk(
   "focusSessions/fetchUserFocusSessions",
@@ -18,13 +20,9 @@ export const addFocusSession = createAsyncThunk(
   "focusSessions/addFocusSession",
   async (newSession, thunkAPI) => {
     const accessToken = localStorage.getItem("accessToken");
-    const response = await axios.post(
-      "/api/focusSessions/:topicId",
-      newSession,
-      {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      }
-    );
+    const response = await axios.post(`/api/focusSessions/`, newSession, {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
     return response.data;
   }
 );
@@ -41,16 +39,13 @@ export const deleteFocusSession = createAsyncThunk(
   }
 );
 
-// Define the initial state for the focus sessions slice
-const initialState = {
-  focusSessions: [],
-  status: "idle",
-  error: null,
-};
-
 const focusSessionsSlice = createSlice({
   name: "focusSessions",
-  initialState,
+  initialState: {
+    focusSessions: [],
+    status: "idle",
+    error: null,
+  },
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -65,13 +60,29 @@ const focusSessionsSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
+      .addCase(addFocusSession.pending, (state) => {
+        state.status = "loading";
+      })
       .addCase(addFocusSession.fulfilled, (state, action) => {
+        state.status = "succeeded";
         state.focusSessions.push(action.payload);
       })
+      .addCase(addFocusSession.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(deleteFocusSession.pending, (state) => {
+        state.status = "loading";
+      })
       .addCase(deleteFocusSession.fulfilled, (state, action) => {
+        state.status = "succeeded";
         state.focusSessions = state.focusSessions.filter(
           (session) => session.id !== action.payload
         );
+      })
+      .addCase(deleteFocusSession.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
       });
   },
 });

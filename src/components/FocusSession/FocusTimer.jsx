@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 //sub component
 import AddFocusSession from "./AddFocusSession";
 
-const FocusTimer = () => {
+const FocusTimer = ({ selectedTopic, setShowAddSession }) => {
   const [timer, setTimer] = useState(1 * 60);
   const [timerDuration, setTimerDuration] = useState(1);
   const [isActive, setIsActive] = useState(false);
@@ -75,7 +75,13 @@ const FocusTimer = () => {
         <button onClick={handlePause}>Pause</button>
         <button onClick={handleReset}>Reset</button>
       </div>
-      {alertDisplayed && <AddFocusSession />}
+      {alertDisplayed && (
+        <AddFocusSession
+          selectedTopic={selectedTopic}
+          setShowAddSession={setShowAddSession}
+          timerDuration={timerDuration}
+        />
+      )}
     </div>
   );
 };

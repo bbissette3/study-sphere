@@ -10,7 +10,7 @@ import {
 //sub component
 import TopicResources from "./TopicResources";
 
-const TopicSelector = () => {
+const TopicSelector = ({ setSelectedTopic, selectedTopic }) => {
   const dispatch = useDispatch();
 
   const userTopics = useSelector((state) => state.topics.userTopics);
@@ -20,18 +20,19 @@ const TopicSelector = () => {
 
   const [selectedUserTopic, setSelectedUserTopic] = useState("");
   const [selectedSubscribedTopic, setSelectedSubscribedTopic] = useState("");
-  const [selectedTopic, setSelectedTopic] = useState("");
+  // const [selectedTopic, setSelectedTopic] = useState("");
 
   useEffect(() => {
     const fetchTopics = async () => {
       await Promise.all([
         dispatch(fetchUserTopics()),
         dispatch(fetchUserSubscribedTopics()),
+        setSelectedTopic(selectedTopic),
       ]);
     };
 
     fetchTopics();
-  }, [dispatch]);
+  }, [dispatch, selectedTopic]);
 
   const handleUserTopicSelect = (e) => {
     setSelectedUserTopic(e.target.value);
