@@ -20,7 +20,6 @@ const TopicSelector = ({ setSelectedTopic, selectedTopic }) => {
 
   const [selectedUserTopic, setSelectedUserTopic] = useState("");
   const [selectedSubscribedTopic, setSelectedSubscribedTopic] = useState("");
-  // const [selectedTopic, setSelectedTopic] = useState("");
 
   useEffect(() => {
     const fetchTopics = async () => {
@@ -79,7 +78,10 @@ const TopicSelector = ({ setSelectedTopic, selectedTopic }) => {
           ))}
         </select>
       </div>
-      <TopicResources selectedTopic={selectedTopic} />
+      <TopicResources
+        selectedTopic={selectedTopic}
+        setSelectedTopic={setSelectedTopic}
+      />
     </div>
   );
 };

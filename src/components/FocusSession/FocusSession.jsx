@@ -4,8 +4,6 @@ import FocusTimer from "./FocusTimer";
 
 const FocusSession = () => {
   const [showAddSession, setShowAddSession] = useState(false);
-
-  //trying something new
   const [selectedTopic, setSelectedTopic] = useState("");
 
   const handleToggleModal = () => {
@@ -42,6 +40,7 @@ const FocusSession = () => {
             />
             <FocusTimer
               selectedTopic={selectedTopic}
+              setSelectedTopic={setSelectedTopic}
               setShowAddSession={setShowAddSession}
             />
           </div>

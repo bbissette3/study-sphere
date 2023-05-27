@@ -8,6 +8,7 @@ const AddFocusSession = ({
   selectedTopic,
   setShowAddSession,
   timerDuration,
+  setSelectedTopic,
 }) => {
   const [learned, setLearned] = useState("");
   const [toLearn, setToLearn] = useState("");
@@ -39,6 +40,7 @@ const AddFocusSession = ({
 
     setLearned("");
     setToLearn("");
+    setSelectedTopic("");
     setShowAddSession(false);
   };
 
@@ -46,7 +48,7 @@ const AddFocusSession = ({
     <form onSubmit={handleSubmitFocusSession} className="text-center pb-4">
       <label className="block">
         What did you learn?
-        <input
+        <textarea
           type="text"
           value={learned}
           onChange={handleLearnedChange}
@@ -55,7 +57,7 @@ const AddFocusSession = ({
       </label>
       <label className="block mt-4">
         What do you want to learn next?
-        <input
+        <textarea
           type="text"
           value={toLearn}
           onChange={handleToLearnChange}
