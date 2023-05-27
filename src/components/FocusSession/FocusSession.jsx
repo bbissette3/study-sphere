@@ -11,7 +11,8 @@ const FocusSession = () => {
 
   return (
     <div className="pl-64">
-      <div className="p-6">
+      <h2 className="text-center my-4 text-2xl ">Time to Focus!</h2>
+      <div className="text-center">
         <button
           onClick={handleToggleModal}
           className="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700"
