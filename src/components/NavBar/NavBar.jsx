@@ -54,7 +54,7 @@ const Navbar = () => {
           Edit Profile
         </button>
         {showEditUser && (
-          <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 p-6 z-50">
+          <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 p-6 z-50 ">
             <EditUser onClose={() => setShowEditUser(false)} />
           </div>
         )}

@@ -34,7 +34,13 @@ const AddTopic = ({ handleToggleForm }) => {
 
   return (
     <>
-      <div className="bg-blue-300 rounded-lg shadow-lg p-10 w-full">
+      <div className="bg-blue-300 rounded-lg shadow-lg p-10 w-full relative">
+        <button
+          className="absolute top-4 right-4 text-lg font-bold text-black"
+          onClick={handleToggleForm}
+        >
+          X
+        </button>
         <h2 className="text-2xl font-bold mb-4">Create a new topic</h2>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <input
@@ -64,14 +70,6 @@ const AddTopic = ({ handleToggleForm }) => {
             Submit
           </button>
         </form>
-        <div className="text-center mt-4">
-          <button
-            className="bg-red-500 text-white px-4 py-2 rounded"
-            onClick={handleToggleForm}
-          >
-            Close
-          </button>
-        </div>
       </div>
     </>
   );

@@ -19,7 +19,13 @@ const EditUser = ({ onClose }) => {
   };
 
   return (
-    <div className="bg-blue-300 rounded-lg shadow-lg p-6">
+    <div className="bg-blue-300 rounded-lg shadow-lg p-6 relative">
+      <button
+        className="absolute top-4 right-4 text-lg font-bold text-black"
+        onClick={onClose}
+      >
+        X
+      </button>
       <h2 className="text-2xl font-bold mb-4 text-center text-black">
         Update Profile
       </h2>
@@ -53,14 +59,6 @@ const EditUser = ({ onClose }) => {
           Update
         </button>
       </form>
-      <div className="text-center mt-4">
-        <button
-          className="bg-red-500 text-white px-4 py-2 rounded"
-          onClick={onClose}
-        >
-          Close
-        </button>
-      </div>
     </div>
   );
 };

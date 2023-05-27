@@ -18,7 +18,9 @@ const DeleteUser = ({ onClose }) => {
 
   return (
     <div className="bg-blue-300 rounded-lg shadow-lg p-6">
-      <h2 className="text-2xl font-bold mb-4 text-center">Delete Profile</h2>
+      <h2 className="text-2xl font-bold mb-4 text-center text-black">
+        Delete Profile
+      </h2>
       <p className="mb-4 text-black">
         Are you sure you want to delete your profile? This action cannot be
         undone.
@@ -33,7 +35,7 @@ const DeleteUser = ({ onClose }) => {
         className="bg-blue-500 text-white px-4 py-2 rounded w-full mt-4"
         onClick={onClose}
       >
-        Cancel
+        No! Don't Delete My Profile!
       </button>
     </div>
   );

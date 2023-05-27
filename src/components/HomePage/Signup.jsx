@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signup } from "../../store/slice/userSlice";
 
-const Signup = ({ handleToggleForm }) => {
+const Signup = ({ handleToggleForm, handleToggleModal }) => {
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
@@ -31,7 +31,13 @@ const Signup = ({ handleToggleForm }) => {
 
   return (
     <>
-      <h2 className="text-2xl font-bold mb-4">Create an account</h2>
+      <button
+        className="absolute top-4 right-4 text-lg font-bold text-black"
+        onClick={handleToggleModal}
+      >
+        X
+      </button>
+      <h2 className="text-2xl font-bold mb-4 text-center">Create an account</h2>
       <form className="flex flex-col gap-4" onSubmit={handleSignup}>
         <input
           type="text"

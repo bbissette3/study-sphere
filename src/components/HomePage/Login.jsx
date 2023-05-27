@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signin } from "../../store/slice/userSlice";
 
-const Login = ({ handleToggleForm }) => {
+const Login = ({ handleToggleForm, handleToggleModal }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -39,7 +39,13 @@ const Login = ({ handleToggleForm }) => {
 
   return (
     <>
-      <h2 className="text-2xl font-bold mb-4">Log in</h2>
+      <button
+        className="absolute top-4 right-4 text-lg font-bold text-black"
+        onClick={handleToggleModal}
+      >
+        X
+      </button>
+      <h2 className="text-2xl font-bold mb-4 text-center">Log in</h2>
       <form className="flex flex-col gap-4" onSubmit={handleLogin}>
         <input
           type="text"

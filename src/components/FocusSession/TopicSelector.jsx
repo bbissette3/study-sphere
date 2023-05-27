@@ -52,9 +52,9 @@ const TopicSelector = () => {
   };
 
   return (
-    <div className="topic-selection">
-      <h2>Select a Topic you created or subscribed to!</h2>
-      <div>
+    <div className="text-center">
+      <h2 className="pb-2 ">Select a Topic you created or subscribed to!</h2>
+      <div className="pb-4">
         <select value={selectedUserTopic} onChange={handleUserTopicSelect}>
           <option value="">Select a topic you created...</option>
           {userTopics.map((topic) => (
@@ -65,7 +65,7 @@ const TopicSelector = () => {
         </select>
       </div>
 
-      <div>
+      <div className="pb-4">
         <select
           value={selectedSubscribedTopic}
           onChange={handleSubscribedTopicSelect}
