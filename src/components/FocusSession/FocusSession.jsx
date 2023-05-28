@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { debounce } from "lodash";
 
 //redux
 import { useDispatch, useSelector } from "react-redux";
@@ -12,13 +13,21 @@ import FocusSessionDisplay from "./FocusSessionDisplay";
 const FocusSession = () => {
   const [showAddSession, setShowAddSession] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+
   const dispatch = useDispatch();
 
   const sessions = useSelector((state) => state.focusSessions.focusSessions);
 
   useEffect(() => {
-    dispatch(fetchUserFocusSessions());
-  }, [dispatch]);
+    const debouncedFetchUserFocusSessions = debounce((searchTerm) => {
+      console.log("Search term:", searchTerm);
+      dispatch(fetchUserFocusSessions(searchTerm));
+    }, 1000);
+    debouncedFetchUserFocusSessions(searchTerm);
+  }, [dispatch, searchTerm]);
+
+  console.log("Filtered Sessions:", sessions);
 
   const handleToggleModal = () => {
     setSelectedTopic("");
@@ -45,12 +54,20 @@ const FocusSession = () => {
   });
 
   return (
-    <div className="pl-64">
-      <h2 className="text-center my-4 text-2xl ">Time to Focus!</h2>
-      <div className="text-center">
+    <div className="pl-64 pr-5">
+      <h2 className="text-center my-4 text-2xl">Time to Focus!</h2>
+      <div className="flex justify-center items-center w-full mb-4">
+        <input
+          className="w-full lg:w-1/2 xl:w-1/3 h-10 px-3 rounded-full border-2 border-gray-300"
+          type="search"
+          name="search"
+          placeholder="Search for a topic..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
         <button
           onClick={handleToggleModal}
-          className="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700 mb-5"
+          className="py-2 px-4 ml-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700"
         >
           Start Focus Session
         </button>

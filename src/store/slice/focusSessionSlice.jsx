@@ -6,10 +6,12 @@ axios.defaults.baseURL = "http://localhost:8888";
 // Async action to fetch all focus sessions
 export const fetchUserFocusSessions = createAsyncThunk(
   "focusSessions/fetchUserFocusSessions",
-  async (_, thunkAPI) => {
+  async (searchTerm) => {
     const accessToken = localStorage.getItem("accessToken");
+    const params = searchTerm ? { searchTerm: searchTerm } : {};
     const response = await axios.get("/api/focusSessions/user", {
       headers: { Authorization: `Bearer ${accessToken}` },
+      params: params,
     });
     return response.data;
   }
@@ -18,7 +20,7 @@ export const fetchUserFocusSessions = createAsyncThunk(
 // Async action to add a new focus session
 export const addFocusSession = createAsyncThunk(
   "focusSessions/addFocusSession",
-  async (newSession, thunkAPI) => {
+  async (newSession) => {
     const accessToken = localStorage.getItem("accessToken");
     const response = await axios.post(`/api/focusSessions/`, newSession, {
       headers: { Authorization: `Bearer ${accessToken}` },
@@ -30,7 +32,7 @@ export const addFocusSession = createAsyncThunk(
 // Async action to delete a focus session
 export const deleteFocusSession = createAsyncThunk(
   "focusSessions/deleteFocusSession",
-  async (id, thunkAPI) => {
+  async (id) => {
     const accessToken = localStorage.getItem("accessToken");
     await axios.delete(`/api/focusSessions/${id}`, {
       headers: { Authorization: `Bearer ${accessToken}` },
