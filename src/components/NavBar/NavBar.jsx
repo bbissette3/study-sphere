@@ -30,25 +30,25 @@ const Navbar = () => {
       <div className=" w-[225px] bg-gray-900 h-screen fixed flex flex-col justify-start py-4 px-8 text-white">
         <h2 className="text-center text-2xl">{currentUser.username}</h2>
         <NavLink
-          className="p-5 text-white text-center hover:bg-blue-700 rounded"
+          className="p-5 text-white text-center hover:bg-blue-800 hover:text-white rounded transition-colors duration-300"
           to="/dashboard"
         >
           Dash Board
         </NavLink>
         <NavLink
-          className="p-5 text-white text-center hover:bg-blue-700 rounded"
+          className="p-5 text-white text-center hover:bg-blue-800 hover:text-white rounded transition-colors duration-300"
           to="/focusSessions"
         >
           Focus Session
         </NavLink>
         <NavLink
-          className="p-5 text-white text-center hover:bg-blue-700 rounded"
+          className="p-5 text-white text-center hover:bg-blue-800 hover:text-white rounded transition-colors duration-300"
           to="/forum"
         >
           Forums
         </NavLink>
         <button
-          className="p-5 text-white hover:bg-blue-700 rounded"
+          className="p-5 text-white hover:bg-blue-800 hover:text-white rounded transition-colors duration-300"
           onClick={() => setShowEditUser(true)}
         >
           Edit Profile
@@ -59,18 +59,19 @@ const Navbar = () => {
           </div>
         )}
         <button
-          className="p-5 text-white hover:bg-blue-700 rounded"
+          className="p-5 text-white hover:bg-blue-800 hover:text-white rounded transition-colors duration-300"
           onClick={() => setShowDeleteUser(true)}
         >
           Delete Profile
         </button>
+
         {showDeleteUser && (
           <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
             <DeleteUser onClose={() => setShowDeleteUser(false)} />
           </div>
         )}
         <button
-          className="p-5 text-white hover:bg-blue-700 rounded"
+          className="p-5 text-white hover:bg-blue-800 hover:text-white rounded transition-colors duration-300"
           onClick={handleLogout}
         >
           Log Out

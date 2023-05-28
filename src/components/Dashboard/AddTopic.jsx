@@ -1,4 +1,6 @@
 import { useState } from "react";
+
+//redux
 import { useDispatch } from "react-redux";
 import { addTopic, fetchUserTopics } from "../../store/slice/topicSlice";
 
@@ -41,31 +43,33 @@ const AddTopic = ({ handleToggleForm }) => {
         >
           X
         </button>
-        <h2 className="text-2xl font-bold mb-4">Create a new topic</h2>
+        <h2 className="text-2xl font-bold mb-4 text-black">
+          Create a new topic
+        </h2>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="border-2 rounded px-3 py-2"
+            className="border rounded p-2 bg-white"
           />
           <input
             type="text"
             placeholder="Subject"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
-            className="border-2 rounded px-3 py-2"
+            className="border rounded p-2 bg-white"
           />
           <textarea
             placeholder="Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="border-2 rounded px-3 py-2 h-32" // Add a height here
+            className="border rounded p-2 h-32 bg-white" // Add a height here
           />
           <button
             type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+            className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300 mt-4"
           >
             Submit
           </button>

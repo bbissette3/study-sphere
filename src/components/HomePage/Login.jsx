@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-//redux
+// Redux
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signin } from "../../store/slice/userSlice";
@@ -52,24 +52,24 @@ const Login = ({ handleToggleForm, handleToggleModal }) => {
           placeholder="Email address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border rounded p-2"
+          className="border rounded p-2 bg-white"
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="border rounded p-2"
+          className="border rounded p-2 bg-white"
         />
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300"
         >
           Login
         </button>
       </form>
       <button
-        className="bg-red-500 text-white px-4 py-2 rounded mt-4"
+        className="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded mt-4 transition-colors duration-300"
         onClick={handleToggleForm}
       >
         Don't have an account? Signup!

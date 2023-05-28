@@ -1,4 +1,3 @@
-//redux
 import { useDispatch, useSelector } from "react-redux";
 import { deleteUser } from "../../store/slice/userSlice";
 
@@ -26,13 +25,13 @@ const DeleteUser = ({ onClose }) => {
         undone.
       </p>
       <button
-        className="bg-red-500 text-white px-4 py-2 rounded w-full"
+        className="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded transition-colors duration-300 w-full"
         onClick={handleDeleteUser}
       >
         Confirm Delete
       </button>
       <button
-        className="bg-blue-500 text-white px-4 py-2 rounded w-full mt-4"
+        className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300 w-full mt-4"
         onClick={onClose}
       >
         No! Don't Delete My Profile!

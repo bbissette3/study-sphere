@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-//redux
+// Redux
 import { useDispatch, useSelector } from "react-redux";
 import { editUser } from "../../store/slice/userSlice";
 
@@ -36,25 +36,25 @@ const EditUser = ({ onClose }) => {
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="border rounded p-2 text-black"
+          className="border rounded p-2 bg-white text-black"
         />
         <input
           type="text"
           placeholder="Email address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border rounded p-2  text-black"
+          className="border rounded p-2 bg-white text-black"
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="border rounded p-2  text-black"
+          className="border rounded p-2 bg-white text-black"
         />
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+          className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300 mt-4"
         >
           Update
         </button>

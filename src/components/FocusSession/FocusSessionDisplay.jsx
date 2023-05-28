@@ -4,7 +4,7 @@ const FocusSessionDisplay = ({ session, index }) => {
       <div className="border-2 border-gray-300 rounded-md tracking-wide shadow-lg bg-opacity-80 bg-gray-900 text-white">
         {" "}
         <div className="text-center px-5">
-          <h2 className="text-xl font-bold py-2 pl-28">
+          <h2 className="text-xl font-bold py-2 text-center">
             {session.topic.title} Session {index}
           </h2>
           <div className="grid grid-cols-8 text-center pb-4">

@@ -1,7 +1,7 @@
-//react
+// React
 import { useState } from "react";
 
-//redux
+// Redux
 import { useDispatch } from "react-redux";
 import { signup } from "../../store/slice/userSlice";
 
@@ -17,6 +17,7 @@ const Signup = ({ handleToggleForm, handleToggleModal }) => {
 
     if (email === "" || username === "" || password === "") {
       alert("Please fill in all fields!");
+      return;
     }
 
     // Dispatch the sign-up action with the form data
@@ -44,31 +45,31 @@ const Signup = ({ handleToggleForm, handleToggleModal }) => {
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="border rounded p-2"
+          className="border rounded p-2 bg-white"
         />
         <input
           type="text"
           placeholder="Email address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border rounded p-2"
+          className="border rounded p-2 bg-white"
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="border rounded p-2"
+          className="border rounded p-2 bg-white"
         />
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300"
         >
           Sign Up
         </button>
       </form>
       <button
-        className="bg-red-500 text-white px-4 py-2 rounded mt-4"
+        className="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded mt-4 transition-colors duration-300"
         onClick={handleToggleForm}
       >
         Already have an account? Login!
