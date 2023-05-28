@@ -21,13 +21,10 @@ const FocusSession = () => {
 
   useEffect(() => {
     const debouncedFetchUserFocusSessions = debounce((searchTerm) => {
-      console.log("Search term:", searchTerm);
       dispatch(fetchUserFocusSessions(searchTerm));
     }, 1000);
     debouncedFetchUserFocusSessions(searchTerm);
   }, [dispatch, searchTerm]);
-
-  console.log("Filtered Sessions:", sessions);
 
   const handleToggleModal = () => {
     setSelectedTopic("");
