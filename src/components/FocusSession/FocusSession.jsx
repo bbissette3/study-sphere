@@ -1,4 +1,6 @@
 import { useState } from "react";
+
+//sub Component
 import TopicSelector from "./TopicSelector";
 import FocusTimer from "./FocusTimer";
 
@@ -7,6 +9,7 @@ const FocusSession = () => {
   const [selectedTopic, setSelectedTopic] = useState("");
 
   const handleToggleModal = () => {
+    setSelectedTopic("");
     setShowAddSession(!showAddSession);
   };
 
