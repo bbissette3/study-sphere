@@ -18,7 +18,7 @@ const FocusSessionDisplay = ({ session, index }) => {
           <div className="flex items-center">
             <div className="w-full text-center">
               <h2 className="text-xl font-bold py-2">
-                {session.topic.title} Session {index}
+                {session.topic && session.topic.title} Session {index}
               </h2>
             </div>
             <div>
