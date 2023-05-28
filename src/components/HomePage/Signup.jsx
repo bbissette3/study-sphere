@@ -24,10 +24,10 @@ const Signup = ({ handleToggleForm, handleToggleModal }) => {
     await dispatch(signup({ email, username, password }));
 
     // Clear form fields
+    alert("Account has been created");
     setEmail("");
     setUsername("");
     setPassword("");
-    alert("Account has been created");
   };
 
   return (

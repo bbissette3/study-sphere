@@ -64,7 +64,7 @@ const FocusSession = () => {
         />
         <button
           onClick={handleToggleModal}
-          className="py-2 px-4 ml-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700"
+          className="bg-blue-500 text-white px-4 py-2 rounded ml-4"
         >
           Start Focus Session
         </button>
