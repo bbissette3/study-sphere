@@ -64,8 +64,8 @@ const focusSessionsSlice = createSlice({
         state.status = "loading";
       })
       .addCase(addFocusSession.fulfilled, (state, action) => {
+        state.focusSessions = [...state.focusSessions, action.payload];
         state.status = "succeeded";
-        state.focusSessions.push(action.payload);
       })
       .addCase(addFocusSession.rejected, (state, action) => {
         state.status = "failed";
