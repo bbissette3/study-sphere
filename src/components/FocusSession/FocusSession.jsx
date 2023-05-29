@@ -23,7 +23,16 @@ const FocusSession = () => {
     const debouncedFetchUserFocusSessions = debounce((searchTerm) => {
       dispatch(fetchUserFocusSessions(searchTerm));
     }, 1000);
-    debouncedFetchUserFocusSessions(searchTerm);
+
+    if (searchTerm) {
+      debouncedFetchUserFocusSessions(searchTerm);
+    } else {
+      dispatch(fetchUserFocusSessions(searchTerm));
+    }
+    // Cleanup function to cancel any outstanding debounced calls
+    return () => {
+      debouncedFetchUserFocusSessions.cancel();
+    };
   }, [dispatch, searchTerm]);
 
   const handleToggleModal = () => {
@@ -52,7 +61,7 @@ const FocusSession = () => {
 
   return (
     <div className="pl-64 pr-5">
-      <h2 className="text-center my-4 text-2xl">Time to Focus!</h2>
+      <h2 className="text-center my-4 text-2xl font-bold">Time to Focus!</h2>
       <div className="flex justify-center items-center w-full mb-4">
         <input
           className="w-full lg:w-1/2 xl:w-1/3 h-10 px-3 rounded-full border-2 border-gray-300"
@@ -94,7 +103,15 @@ const FocusSession = () => {
           </div>
         </div>
       )}
-      {sessionComponents}
+      {sessionComponents.length > 0 ? (
+        sessionComponents
+      ) : (
+        <div className="flex justify-center items-center h-full">
+          <p className="mx-64 whitespace-normal pt-5 text-2xl font-bold">
+            You do not have any Focus Sessions yet. Start a Focus Session.
+          </p>
+        </div>
+      )}
     </div>
   );
 };

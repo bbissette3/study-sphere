@@ -98,11 +98,27 @@ const Dashboard = () => {
           </div>
         </div>
       )}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 cursor-pointer ">
-        {displayedTopics.map((topic) => (
-          <TopicCard key={topic.id} topic={topic} />
-        ))}
-      </div>
+      {displayedTopics.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 cursor-pointer">
+          {displayedTopics.map((topic) => (
+            <TopicCard key={topic.id} topic={topic} />
+          ))}
+        </div>
+      ) : (
+        <div className="text-center">
+          {currentTab === "created" ? (
+            <p className="mx-64 whitespace-normal pt-5 text-2xl font-bold">
+              You have not created any topics, either add a topic or go to the
+              forums to subscribe to other users topics
+            </p>
+          ) : (
+            <p className="mx-64 whitespace-normal pt-5 text-2xl font-bold">
+              You have not subscribed to any topics, go to the forums to
+              subscribe to other users topics
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 };
