@@ -107,11 +107,12 @@ const userSlice = createSlice({
     currentUser: null,
     loading: false,
     error: null,
+    isChecking: false,
   },
   reducers: {},
   extraReducers: (builder) => {
-    // Signup reducers
     builder
+      // Signup reducers
       .addCase(signup.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -124,9 +125,7 @@ const userSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-
       // Signin reducers
-      // builder
       .addCase(signin.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -139,20 +138,21 @@ const userSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-
       // Get current user reducer
-      // builder
       .addCase(getCurrentUser.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.isChecking = true;
       })
       .addCase(getCurrentUser.fulfilled, (state, action) => {
         state.loading = false;
         state.currentUser = action.payload;
+        state.isChecking = false;
       })
       .addCase(getCurrentUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
+        state.isChecking = false;
       })
       //edit user
       .addCase(editUser.pending, (state) => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 //sub component
 import AddFocusSession from "./AddFocusSession";
@@ -14,7 +14,7 @@ const FocusTimer = ({ selectedTopic, setSelectedTopic, setShowAddSession }) => {
     let interval = null;
     if (isActive && isPaused) {
       interval = setInterval(() => {
-        setTimer((timer) => timer - 1);
+        setTimer((timer) => (timer > 0 ? timer - 1 : 0));
       }, 1000);
     } else if (!isPaused && timer !== 0) {
       clearInterval(interval);
@@ -30,6 +30,33 @@ const FocusTimer = ({ selectedTopic, setSelectedTopic, setShowAddSession }) => {
 
     return () => clearInterval(interval);
   }, [isActive, isPaused, timer, alertDisplayed]);
+
+  //can only test the notification across tabs when deployed. can not test  these notifications on local host
+  // useEffect(() => {
+  //   let interval = null;
+  //   if (isActive && isPaused) {
+  //     interval = setInterval(() => {
+  //       setTimer((timer) => (timer > 0 ? timer - 1 : 0));
+  //     }, 1000);
+  //   } else if (!isPaused && timer !== 0) {
+  //     clearInterval(interval);
+  //   }
+
+  //   // Check if the timer is 0 and the alert has not been displayed yet
+  //   if (timer === 0 && !alertDisplayed) {
+  //     setIsActive(false);
+  //     setIsPaused(false);
+  //     setAlertDisplayed(true);
+
+  //     if ("Notification" in window && Notification.permission === "granted") {
+  //       new Notification("Times up!");
+  //     } else {
+  //       alert("Times up!");
+  //     }
+  //   }
+
+  //   return () => clearInterval(interval);
+  // }, [isActive, isPaused, timer, alertDisplayed]);
 
   // Reset the alertDisplayed state when timer is reset or started
   const handleReset = () => {

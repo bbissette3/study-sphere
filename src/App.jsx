@@ -19,6 +19,7 @@ import FocusSession from "./components/FocusSession/FocusSession";
 const App = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
+  const isChecking = useSelector((state) => state.user.isChecking);
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
@@ -28,6 +29,8 @@ const App = () => {
       dispatch(getCurrentUser(token));
     }
   }, [dispatch]);
+
+  if (isChecking) return null;
 
   return (
     <>
