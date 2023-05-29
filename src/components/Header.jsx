@@ -1,6 +1,10 @@
+import logo from "./Images/logo.png";
+
 const Header = () => {
   return (
-    <div className="bg-green-500 text-center">Welcome to Study Sphere!</div>
+    <div className="text-center">
+      <img src={logo} alt="Study Sphere Logo" className="w-full h-20" />
+    </div>
   );
 };
 
