@@ -27,12 +27,12 @@ const TopicDetails = () => {
   const isCurrentUserTopicCreator = topic && topic.userId === currentUserId;
 
   return (
-    <div className="container mx-auto py-10 pl-64 pr-8">
-      <div className="bg-gray-500 p-8">
+    <div className="container mx-auto py-10 pl-64 pr-8 text-darkGray">
+      <div className="bg-tan p-8">
         <div className="flex justify-between">
           <button
             onClick={() => navigate(-1)}
-            className="mb-4 flex items-center text-black"
+            className="mb-4 flex items-center text-darkGray"
           >
             <IoIosArrowBack size={24} className="mr-2" />
           </button>
@@ -40,11 +40,11 @@ const TopicDetails = () => {
             <SubscriptionButton topicId={topic.id} />
           )}
         </div>
-        <h1 className="text-2xl font-bold text-center pr-8 mb-4">
+        <h1 className="text-2xl font-bold text-center pr-8 mb-4 text-darkGray">
           {topic && topic.title}
         </h1>
         <div className="flex flex-col md:flex-row md:items-stretch justify-center md:space-x-8">
-          <div className="w-full md:w-1/2 pr-2 border-r-2 border-gray-200">
+          <div className="w-full md:w-1/2 pr-2 border-r-2 border-darkGray text-darkGray">
             <h2 className="text-lg font-bold mb-2 text-center">Subject</h2>
             <p className="mb-4 text-center">{topic && topic.subject}</p>
             <h2 className="text-lg font-bold mb-2 text-center">Description</h2>

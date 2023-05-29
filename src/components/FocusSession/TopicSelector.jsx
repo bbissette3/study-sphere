@@ -53,7 +53,9 @@ const TopicSelector = ({ setSelectedTopic, selectedTopic }) => {
 
   return (
     <div className="text-center">
-      <h2 className="pb-2 ">Select a Topic you created or subscribed to!</h2>
+      <h2 className="pb-2 text-darkGray font-semibold">
+        Select a Topic you created or subscribed to!
+      </h2>
       <div className="pb-4">
         <select value={selectedUserTopic} onChange={handleUserTopicSelect}>
           <option value="">Select a topic you created...</option>

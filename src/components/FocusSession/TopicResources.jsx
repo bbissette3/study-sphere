@@ -13,14 +13,16 @@ const TopicResources = ({ selectedTopic }) => {
 
   return (
     <div className="resource-list">
-      <h3 className="pb-4">Resources for Selected Topic</h3>
+      <h3 className="pb-4 text-darkGray font-semibold">
+        Resources for Selected Topic
+      </h3>
       {resources.map((resource) => (
         <div key={resource.id}>
           <a
             href={resource.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="underline"
+            className="underline text-darkGray font-semibold"
           >
             {resource.url}
           </a>

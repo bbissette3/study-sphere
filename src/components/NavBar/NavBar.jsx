@@ -27,7 +27,7 @@ const Navbar = () => {
 
   return (
     <div className="container">
-      <div className=" w-[225px] bg-gray-900 h-screen fixed flex flex-col justify-start py-4 px-8 text-white">
+      <div className=" w-[225px] bg-darkGray h-screen fixed flex flex-col justify-start py-4 px-8 text-white">
         <h2 className="text-center text-2xl">{currentUser.username}</h2>
         <NavLink
           className="p-5 text-white text-center hover:bg-blue-800 hover:text-white rounded transition-colors duration-300"
@@ -55,7 +55,9 @@ const Navbar = () => {
         </button>
         {showEditUser && (
           <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 p-6 z-50 ">
-            <EditUser onClose={() => setShowEditUser(false)} />
+            <div className="bg-lightBlue rounded-lg shadow-lg p-6 relative">
+              <EditUser onClose={() => setShowEditUser(false)} />
+            </div>
           </div>
         )}
         <button
@@ -64,10 +66,11 @@ const Navbar = () => {
         >
           Delete Profile
         </button>
-
         {showDeleteUser && (
           <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
-            <DeleteUser onClose={() => setShowDeleteUser(false)} />
+            <div className="bg-lightBlue rounded-lg shadow-lg p-6 relative">
+              <DeleteUser onClose={() => setShowDeleteUser(false)} />
+            </div>
           </div>
         )}
         <button

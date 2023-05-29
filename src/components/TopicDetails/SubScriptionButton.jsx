@@ -36,7 +36,7 @@ const SubscriptionButton = ({ topicId }) => {
 
   return (
     <button
-      className="bg-blue-500 text-white py-2 px-4 rounded"
+      className="bg-darkBlue opacity-75 hover:bg-darkBlue hover:opacity-100 text-white px-4 py-2 rounded transition-colors duration-300"
       onClick={handleSubscription}
     >
       {isSubscribed ? "Unsubscribe" : "Subscribe"}

@@ -46,7 +46,7 @@ const AddFocusSession = ({
 
   return (
     <form onSubmit={handleSubmitFocusSession} className="text-center pb-4">
-      <label className="block">
+      <label className="block text-darkGray font-semibold">
         What did you learn?
         <textarea
           type="text"
@@ -55,7 +55,7 @@ const AddFocusSession = ({
           className="mt-2 block w-full p-3 rounded-lg bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 h-24"
         />
       </label>
-      <label className="block mt-4">
+      <label className="block mt-4 text-darkGray font-semibold">
         What do you want to learn next?
         <textarea
           type="text"
@@ -66,7 +66,7 @@ const AddFocusSession = ({
       </label>
       <button
         type="submit"
-        className="mt-4 py-2 px-4 bg-blue-500 text-white rounded-lg"
+        className="bg-darkBlue opacity-75 hover:bg-darkBlue hover:opacity-100 text-white px-4 py-2 rounded transition-colors duration-300 mt-2"
       >
         Submit
       </button>

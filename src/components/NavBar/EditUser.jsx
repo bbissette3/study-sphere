@@ -19,14 +19,14 @@ const EditUser = ({ onClose }) => {
   };
 
   return (
-    <div className="bg-blue-300 rounded-lg shadow-lg p-6 relative">
+    <>
       <button
-        className="absolute top-4 right-4 text-lg font-bold text-black"
+        className="absolute top-4 right-4 text-lg font-bold text-darkGray"
         onClick={onClose}
       >
         X
       </button>
-      <h2 className="text-2xl font-bold mb-4 text-center text-black">
+      <h2 className="text-2xl font-bold mb-4 text-center text-darkGray">
         Update Profile
       </h2>
 
@@ -36,30 +36,30 @@ const EditUser = ({ onClose }) => {
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="border rounded p-2 bg-white text-black"
+          className="border rounded p-2 bg-white text-darkGray"
         />
         <input
           type="text"
           placeholder="Email address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border rounded p-2 bg-white text-black"
+          className="border rounded p-2 bg-white text-darkGray"
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="border rounded p-2 bg-white text-black"
+          className="border rounded p-2 bg-white text-darkGray"
         />
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300 mt-4"
+          className="bg-darkBlue opacity-75 hover:bg-darkBlue hover:opacity-100 text-white px-4 py-2 rounded transition-colors duration-300"
         >
           Update
         </button>
       </form>
-    </div>
+    </>
   );
 };
 

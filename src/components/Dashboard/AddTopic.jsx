@@ -36,45 +36,43 @@ const AddTopic = ({ handleToggleForm }) => {
 
   return (
     <>
-      <div className="bg-blue-300 rounded-lg shadow-lg p-10 w-full relative">
+      {/* <div className="bg-blue-300 rounded-lg shadow-lg p-10 w-full relative"> */}
+      <button
+        className="absolute top-4 right-4 text-lg font-bold text-darkGray"
+        onClick={handleToggleForm}
+      >
+        X
+      </button>
+      <h2 className="text-2xl font-bold mb-4 text-darkGray">Create a topic</h2>
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="border rounded p-2 bg-white"
+        />
+        <input
+          type="text"
+          placeholder="Subject"
+          value={subject}
+          onChange={(e) => setSubject(e.target.value)}
+          className="border rounded p-2 bg-white"
+        />
+        <textarea
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="border rounded p-2 h-32 bg-white"
+        />
         <button
-          className="absolute top-4 right-4 text-lg font-bold text-black"
-          onClick={handleToggleForm}
+          type="submit"
+          className="bg-darkBlue opacity-75 hover:bg-darkBlue hover:opacity-100 text-white px-4 py-2 rounded transition-colors duration-300"
         >
-          X
+          Submit
         </button>
-        <h2 className="text-2xl font-bold mb-4 text-black">
-          Create a new topic
-        </h2>
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="border rounded p-2 bg-white"
-          />
-          <input
-            type="text"
-            placeholder="Subject"
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
-            className="border rounded p-2 bg-white"
-          />
-          <textarea
-            placeholder="Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            className="border rounded p-2 h-32 bg-white" // Add a height here
-          />
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300 mt-4"
-          >
-            Submit
-          </button>
-        </form>
-      </div>
+      </form>
+      {/* </div> */}
     </>
   );
 };

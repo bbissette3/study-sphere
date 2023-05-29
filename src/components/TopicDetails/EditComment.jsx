@@ -47,9 +47,17 @@ const EditComment = ({ comment, topicId }) => {
         className="inline-block mr-2 cursor-pointer"
       />
       {isEditing && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-75">
-          <div className="bg-white p-4 rounded w-1/2 h-1/4">
-            <h2 className="text-2xl font-bold mb-4">Edit Comment</h2>
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="bg-lightBlue p-6 rounded w-1/2 relative">
+            <button
+              className="absolute top-4 right-4 text-lg font-bold text-darkGray"
+              onClick={handleCancel}
+            >
+              X
+            </button>
+            <h2 className="text-2xl text-darkGray text-center font-bold mb-4">
+              Edit Comment
+            </h2>
             <textarea
               value={editedText}
               onChange={(e) => setEditedText(e.target.value)}
@@ -58,15 +66,9 @@ const EditComment = ({ comment, topicId }) => {
             <div className="flex gap-2 mt-4">
               <button
                 onClick={handleSave}
-                className="bg-blue-500 text-white px-4 py-2 rounded"
+                className="bg-darkBlue opacity-75 hover:bg-darkBlue hover:opacity-100 text-white px-4 py-2 rounded transition-colors duration-300"
               >
                 Save
-              </button>
-              <button
-                onClick={handleCancel}
-                className="bg-red-500 text-white px-4 py-2 rounded"
-              >
-                Cancel
               </button>
             </div>
           </div>

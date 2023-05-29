@@ -87,20 +87,37 @@ const FocusTimer = ({ selectedTopic, setSelectedTopic, setShowAddSession }) => {
   return (
     <div className="text-center space-y-4">
       <div>
-        <h4 className="py-4">Select timer duration:</h4>
+        <h4 className="py-4 text-darkGray font-semibold">
+          Select timer duration:
+        </h4>
         <select value={timerDuration} onChange={handleDurationSelect}>
           <option value={1}>1 minute</option>
           <option value={5}>5 minutes</option>
           <option value={10}>10 minutes</option>
         </select>
       </div>
-      <div className="text-5xl">{`${Math.floor(timer / 60)}:${
-        timer % 60 < 10 ? "0" : ""
-      }${timer % 60}`}</div>
+      <div className="text-5xl text-darkGray font-bold">{`${Math.floor(
+        timer / 60
+      )}:${timer % 60 < 10 ? "0" : ""}${timer % 60}`}</div>
       <div className="space-x-4">
-        <button onClick={handleStart}>Start</button>
-        <button onClick={handlePause}>Pause</button>
-        <button onClick={handleReset}>Reset</button>
+        <button
+          className="bg-darkBlue opacity-75 hover:bg-darkBlue hover:opacity-100 text-white px-4 py-2 rounded transition-colors duration-300"
+          onClick={handleStart}
+        >
+          Start
+        </button>
+        <button
+          className="bg-darkBlue opacity-75 hover:bg-darkBlue hover:opacity-100 text-white px-4 py-2 rounded transition-colors duration-300"
+          onClick={handlePause}
+        >
+          Pause
+        </button>
+        <button
+          className="bg-darkBlue opacity-75 hover:bg-darkBlue hover:opacity-100 text-white px-4 py-2 rounded transition-colors duration-300"
+          onClick={handleReset}
+        >
+          Reset
+        </button>
       </div>
       {alertDisplayed && (
         <AddFocusSession

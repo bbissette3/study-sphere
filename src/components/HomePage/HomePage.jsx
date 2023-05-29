@@ -38,7 +38,7 @@ const HomePage = () => {
     <div className="bg-blue-950 flex flex-col items-center justify-center">
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
-          <div className="bg-blue-300 rounded-lg shadow-lg p-6 relative">
+          <div className="bg-lightBlue rounded-lg shadow-lg p-6 relative">
             {activeForm === "login" ? (
               <Login
                 handleToggleForm={handleToggleForm}
@@ -71,7 +71,7 @@ const HomePage = () => {
           experience!
         </p>
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          className="bg-darkBlue opacity-75 hover:bg-darkBlue hover:opacity-100 text-white px-4 py-2 rounded transition-colors duration-300"
           onClick={handleToggleModal}
         >
           Login

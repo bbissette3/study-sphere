@@ -40,7 +40,7 @@ const Login = ({ handleToggleForm, handleToggleModal }) => {
   return (
     <>
       <button
-        className="absolute top-4 right-4 text-lg font-bold text-black"
+        className="absolute top-4 right-4 text-lg font-bold text-darkGray"
         onClick={handleToggleModal}
       >
         X
@@ -63,13 +63,13 @@ const Login = ({ handleToggleForm, handleToggleModal }) => {
         />
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300"
+          className="bg-darkBlue opacity-75 hover:bg-darkBlue hover:opacity-100 text-white px-4 py-2 rounded transition-colors duration-300"
         >
           Login
         </button>
       </form>
       <button
-        className="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded mt-4 transition-colors duration-300"
+        className="bg-darkBlue opacity-75 hover:bg-darkBlue hover:opacity-100 text-white px-4 py-2 rounded mt-4 transition-colors duration-300"
         onClick={handleToggleForm}
       >
         Don't have an account? Signup!

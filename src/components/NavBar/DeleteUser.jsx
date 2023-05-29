@@ -16,11 +16,11 @@ const DeleteUser = ({ onClose }) => {
   };
 
   return (
-    <div className="bg-blue-300 rounded-lg shadow-lg p-6">
-      <h2 className="text-2xl font-bold mb-4 text-center text-black">
+    <>
+      <h2 className="text-2xl font-bold mb-4 text-center text-darkGray">
         Delete Profile
       </h2>
-      <p className="mb-4 text-black">
+      <p className="mb-4 text-darkGray">
         Are you sure you want to delete your profile? This action cannot be
         undone.
       </p>
@@ -31,12 +31,12 @@ const DeleteUser = ({ onClose }) => {
         Confirm Delete
       </button>
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300 w-full mt-4"
+        className="mt-2 bg-darkBlue opacity-75 hover:bg-darkBlue hover:opacity-100 text-white px-4 py-2 rounded transition-colors duration-300 w-full"
         onClick={onClose}
       >
         No! Don't Delete My Profile!
       </button>
-    </div>
+    </>
   );
 };
 
