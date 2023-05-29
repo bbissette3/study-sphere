@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 
-//sub components
+//sub component
+import ImageCarousel from "./ImageCarousel";
 import Login from "./Login";
 import Signup from "./Signup";
 
 //redux
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
@@ -13,7 +14,6 @@ const HomePage = () => {
   const [activeForm, setActiveForm] = useState("login");
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const handleToggleModal = () => {
     setShowModal(!showModal);
@@ -35,9 +35,9 @@ const HomePage = () => {
   }, [currentUser]);
 
   return (
-    <div className="bg-blue-950 min-h-screen flex items-center justify-center">
+    <div className="bg-blue-950 flex flex-col items-center justify-center">
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
           <div className="bg-blue-300 rounded-lg shadow-lg p-6 relative">
             {activeForm === "login" ? (
               <Login
@@ -53,8 +53,11 @@ const HomePage = () => {
           </div>
         </div>
       )}
-      <div className="text-center">
-        <p className="text-white text-lg mb-6 pl-5 pr-5 pb-10">
+      <div className="w-full h-1/2 mt-0 mb-4">
+        <ImageCarousel />
+      </div>
+      <div className="text-center w-2/3 mx-auto px-5 py-5">
+        <p className="text-white text-lg mb-6">
           Welcome to Study Sphere! Unlock your full learning potential with our
           dedicated platform that empowers you to take charge of your
           educational journey. Connect with a diverse community of learners,
