@@ -27,7 +27,7 @@ const Navbar = () => {
 
   return (
     <div className="container">
-      <div className=" w-[225px] bg-darkGray h-screen fixed flex flex-col justify-start py-4 px-8 text-white">
+      <div className=" w-[225px] bg-gray-700 h-screen fixed flex flex-col justify-start py-4 px-8 text-white">
         <h2 className="text-center text-2xl">{currentUser.username}</h2>
         <NavLink
           className="p-5 text-white text-center hover:bg-blue-800 hover:text-white rounded transition-colors duration-300"
