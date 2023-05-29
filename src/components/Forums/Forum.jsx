@@ -28,7 +28,7 @@ const Forum = () => {
 
   return (
     <div className="pl-64 pr-5">
-      <h1 className="text-4xl font-bold text-center mb-10">
+      <h1 className="text-4xl font-bold text-center mb-10 text-darkGray pt-4">
         Subscribe To Other Topics!
       </h1>
       <div className="flex justify-center mb-4">
