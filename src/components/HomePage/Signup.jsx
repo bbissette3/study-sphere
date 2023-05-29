@@ -3,7 +3,7 @@ import { useState } from "react";
 
 // Redux
 import { useDispatch } from "react-redux";
-import { signup } from "../../store/slice/userSlice";
+import { signup, signin } from "../../store/slice/userSlice";
 
 const Signup = ({ handleToggleForm, handleToggleModal }) => {
   const dispatch = useDispatch();
@@ -21,13 +21,24 @@ const Signup = ({ handleToggleForm, handleToggleModal }) => {
     }
 
     // Dispatch the sign-up action with the form data
-    await dispatch(signup({ email, username, password }));
+    const signupResultAction = await dispatch(
+      signup({ email, username, password })
+    );
 
-    // Clear form fields
-    alert("Account has been created");
-    setEmail("");
-    setUsername("");
-    setPassword("");
+    if (signupResultAction.type === "user/signup/fulfilled") {
+      // Dispatch the sign-in action
+      await dispatch(signin({ email, password }));
+
+      // Clear form fields
+      alert("Account has been created and you are now logged in!");
+      setEmail("");
+      setUsername("");
+      setPassword("");
+    } else {
+      // Handle signup error here
+      alert("There was an error creating your account. Please try again.");
+    }
+    window.location.reload();
   };
 
   return (
