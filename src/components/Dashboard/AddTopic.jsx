@@ -36,7 +36,6 @@ const AddTopic = ({ handleToggleForm }) => {
 
   return (
     <>
-      {/* <div className="bg-blue-300 rounded-lg shadow-lg p-10 w-full relative"> */}
       <button
         className="absolute top-4 right-4 text-lg font-bold text-darkGray"
         onClick={handleToggleForm}
@@ -72,7 +71,6 @@ const AddTopic = ({ handleToggleForm }) => {
           Submit
         </button>
       </form>
-      {/* </div> */}
     </>
   );
 };

@@ -67,7 +67,7 @@ const Navbar = () => {
           Delete Profile
         </button>
         {showDeleteUser && (
-          <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
+          <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50 ">
             <div className="bg-lightBlue rounded-lg shadow-lg p-6 relative">
               <DeleteUser onClose={() => setShowDeleteUser(false)} />
             </div>
