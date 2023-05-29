@@ -60,14 +60,15 @@ const HomePage = () => {
         <p className="text-white text-lg mb-6">
           Welcome to Study Sphere! Unlock your full learning potential with our
           dedicated platform that empowers you to take charge of your
-          educational journey. Connect with a diverse community of learners,
-          educators, and professionals to exchange ideas, collaborate on
-          projects, and support each other's growth. Discover study groups,
-          engage in interactive discussions, access an extensive library of
-          educational resources, and participate in focused study sessions
-          tailored to your needs. Embrace the opportunity to apply yourself,
-          cultivate knowledge, and achieve your learning goals. Join our vibrant
-          community today and embark on an enriching learning experience!
+          educational journey. Explore a wide range of topics, subscribe to
+          users' topics, and access a vast library of educational resources.
+          Participate in focused study sessions tailored to your needs, where
+          you can choose a study time and concentrate on a specific topic.
+          Connect with a diverse community of learners, exchange resources, and
+          engage in interactive discussions. Embrace the opportunity to apply
+          yourself, cultivate knowledge, and achieve your learning goals. Join
+          our vibrant community today and embark on an enriching learning
+          experience!
         </p>
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded"
