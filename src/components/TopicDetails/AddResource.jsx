@@ -36,10 +36,11 @@ const AddResource = ({ topicId }) => {
     <>
       <button
         onClick={handleAdd}
-        className="bg-darkBlue opacity-75 hover:bg-darkBlue hover:opacity-100 text-white py-2 px-4 rounded"
+        className="text-darkGray font-bold underline py-2 px-4 rounded"
       >
         Add Resource
       </button>
+
       {isAdding && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="bg-lightBlue p-6 rounded w-1/2 relative">
