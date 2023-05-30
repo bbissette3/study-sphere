@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:8888";
+axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
 
 // Sign up
 export const signup = createAsyncThunk(

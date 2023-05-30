@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchTopicById } from "./topicSlice";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:8888";
+axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
 
 export const createResource = createAsyncThunk(
   "resources/createResource",
