@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
+axios.defaults.baseURL = import.meta.env.VITE_REACT_APP_BASE_URL;
 
 // Async action to fetch all focus sessions
 export const fetchUserFocusSessions = createAsyncThunk(
