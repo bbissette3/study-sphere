@@ -8,14 +8,11 @@ export const signup = createAsyncThunk(
   "user/signup",
   async ({ username, email, password }) => {
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/api/users/signup`,
-        {
-          username,
-          email,
-          password,
-        }
-      );
+      const response = await axios.post("/api/users/signup", {
+        username,
+        email,
+        password,
+      });
       localStorage.setItem("accessToken", response.data.accessToken);
       return response.data.user;
     } catch (error) {
