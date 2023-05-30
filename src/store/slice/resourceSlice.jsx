@@ -61,7 +61,6 @@ const resourceSlice = createSlice({
       })
       .addCase(createResource.fulfilled, (state, action) => {
         state.status = "succeeded";
-        // Add any fetched resources to the array
         state.resources.push(action.payload);
       })
       .addCase(createResource.rejected, (state, action) => {

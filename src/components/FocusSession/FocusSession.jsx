@@ -61,7 +61,7 @@ const FocusSession = () => {
 
   return (
     <div className="pl-64 pr-5">
-      <h2 className="text-center my-4 text-2xl font-bold text-darkGray">
+      <h2 className="text-center my-4 text-4xl font-bold text-lightBlue">
         Time to Focus!
       </h2>
       <div className="flex justify-center items-center w-full mb-4">

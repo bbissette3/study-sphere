@@ -1,6 +1,7 @@
-import React from "react";
-import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
+
+//redux
+import { useSelector } from "react-redux";
 
 const ProtectedRoute = ({ children }) => {
   const currentUser = useSelector((state) => {
