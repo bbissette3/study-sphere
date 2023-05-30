@@ -3,6 +3,8 @@ import axios from "axios";
 
 axios.defaults.baseURL = import.meta.env.VITE_REACT_APP_BASE_URL;
 
+//bruh
+
 // Add user to topic
 export const addUserToTopic = createAsyncThunk(
   "userTopic/addUserToTopic",
