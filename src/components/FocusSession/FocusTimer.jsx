@@ -55,7 +55,10 @@ const FocusTimer = ({ selectedTopic, setSelectedTopic, setShowAddSession }) => {
       if ("Notification" in window && Notification.permission === "granted") {
         new Notification("Times up!");
       } else {
-        toast.warn("Times up!");
+        toast.warn("Times up!", {
+          toastId: "timesUpToast",
+          autoClose: false,
+        });
       }
     }
 
