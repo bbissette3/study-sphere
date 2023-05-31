@@ -33,7 +33,7 @@ const Navbar = () => {
           className="p-5 text-white text-center  rounded transition-colors duration-300"
           to="/dashboard"
         >
-          Dash Board
+          Dashboard
         </NavLink>
         <NavLink
           className="p-5 text-white text-center  rounded transition-colors duration-300"

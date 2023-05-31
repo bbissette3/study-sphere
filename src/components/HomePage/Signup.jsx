@@ -1,9 +1,13 @@
 // React
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signup, signin } from "../../store/slice/userSlice";
+
+// Toastify
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = ({ handleToggleForm, handleToggleModal }) => {
   const dispatch = useDispatch();
@@ -12,11 +16,24 @@ const Signup = ({ handleToggleForm, handleToggleModal }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const error = useSelector((state) => state.user.error);
+
+  useEffect(() => {
+    if (
+      error &&
+      error.errors &&
+      Array.isArray(error.errors) &&
+      error.errors.length > 0
+    ) {
+      error.errors.forEach((err) => toast.error(err.msg));
+    }
+  }, [error]);
+
   const handleSignup = async (e) => {
     e.preventDefault();
 
     if (email === "" || username === "" || password === "") {
-      alert("Please fill in all fields!");
+      toast.warn("Please fill in all fields!");
       return;
     }
 
@@ -30,15 +47,11 @@ const Signup = ({ handleToggleForm, handleToggleModal }) => {
       await dispatch(signin({ email, password }));
 
       // Clear form fields
-      alert("Account has been created and you are now logged in!");
       setEmail("");
       setUsername("");
       setPassword("");
-    } else {
-      // Handle signup error here
-      alert("There was an error creating your account. Please try again.");
+      window.location.reload();
     }
-    window.location.reload();
   };
 
   return (

@@ -4,6 +4,10 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTopic, fetchUserTopics } from "../../store/slice/topicSlice";
 
+// Toastify
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const AddTopic = ({ handleToggleForm }) => {
   const [title, setTitle] = useState("");
   const [subject, setSubject] = useState("");
@@ -21,7 +25,7 @@ const AddTopic = ({ handleToggleForm }) => {
     e.preventDefault();
 
     if (title === "" || subject === "" || description === "") {
-      alert("Please fill in all fields!");
+      toast.warn("Please fill in all fields!");
     }
 
     await dispatch(

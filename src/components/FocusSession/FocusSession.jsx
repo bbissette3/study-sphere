@@ -61,7 +61,7 @@ const FocusSession = () => {
 
   return (
     <div className="pl-64 pr-5">
-      <h2 className="text-center my-4 text-4xl font-bold text-lightBlue">
+      <h2 className="text-center my-4 text-4xl font-bold text-lightBlue pr-64">
         Time to Focus!
       </h2>
       <div className="flex justify-center items-center w-full mb-4">
@@ -69,7 +69,7 @@ const FocusSession = () => {
           className="w-full lg:w-1/2 xl:w-1/3 h-10 px-3 rounded-full border-2 border-gray-300"
           type="search"
           name="search"
-          placeholder="Search for a topic..."
+          placeholder="Search your focus sessions..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />

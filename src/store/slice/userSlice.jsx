@@ -6,7 +6,7 @@ axios.defaults.baseURL = import.meta.env.VITE_REACT_APP_BASE_URL;
 // Sign up
 export const signup = createAsyncThunk(
   "user/signup",
-  async ({ username, email, password }) => {
+  async ({ username, email, password }, { rejectWithValue }) => {
     try {
       const response = await axios.post("/api/users/signup", {
         username,
@@ -16,7 +16,7 @@ export const signup = createAsyncThunk(
       localStorage.setItem("accessToken", response.data.accessToken);
       return response.data.user;
     } catch (error) {
-      throw new Error(error.response.data.message);
+      return rejectWithValue(error.response.data);
     }
   }
 );
@@ -24,7 +24,7 @@ export const signup = createAsyncThunk(
 // Sign in
 export const signin = createAsyncThunk(
   "user/signin",
-  async ({ email, password }) => {
+  async ({ email, password }, { rejectWithValue }) => {
     try {
       const response = await axios.post("/api/users/login", {
         email,
@@ -33,7 +33,7 @@ export const signin = createAsyncThunk(
       localStorage.setItem("accessToken", response.data.accessToken);
       return response.data.user;
     } catch (error) {
-      throw new Error(error.response.data.message);
+      return rejectWithValue(error.response.data);
     }
   }
 );
@@ -56,7 +56,7 @@ export const getCurrentUser = createAsyncThunk(
 // Edit user
 export const editUser = createAsyncThunk(
   "user/editUser",
-  async ({ userId, username, email, password }) => {
+  async ({ userId, username, email, password }, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem("accessToken");
       const response = await axios.put(
@@ -72,7 +72,7 @@ export const editUser = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      throw new Error(error.response.data.message);
+      return rejectWithValue(error.response.data);
     }
   }
 );
@@ -123,7 +123,7 @@ const userSlice = createSlice({
       })
       .addCase(signup.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload;
       })
       // Signin reducers
       .addCase(signin.pending, (state) => {
@@ -136,7 +136,7 @@ const userSlice = createSlice({
       })
       .addCase(signin.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload;
       })
       // Get current user reducer
       .addCase(getCurrentUser.pending, (state) => {
@@ -165,7 +165,7 @@ const userSlice = createSlice({
       })
       .addCase(editUser.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload;
       })
       //delete user
       .addCase(deleteUser.pending, (state) => {

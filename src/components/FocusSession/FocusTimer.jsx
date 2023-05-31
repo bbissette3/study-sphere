@@ -3,6 +3,10 @@ import { useState, useEffect } from "react";
 //sub component
 import AddFocusSession from "./AddFocusSession";
 
+// Toastify
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const FocusTimer = ({ selectedTopic, setSelectedTopic, setShowAddSession }) => {
   const [timer, setTimer] = useState(1 * 60);
   const [timerDuration, setTimerDuration] = useState(1);
@@ -10,28 +14,6 @@ const FocusTimer = ({ selectedTopic, setSelectedTopic, setShowAddSession }) => {
   const [isPaused, setIsPaused] = useState(false);
   const [alertDisplayed, setAlertDisplayed] = useState(false);
 
-  useEffect(() => {
-    let interval = null;
-    if (isActive && isPaused) {
-      interval = setInterval(() => {
-        setTimer((timer) => (timer > 0 ? timer - 1 : 0));
-      }, 1000);
-    } else if (!isPaused && timer !== 0) {
-      clearInterval(interval);
-    }
-
-    // Check if the timer is 0 and the alert has not been displayed yet
-    if (timer === 0 && !alertDisplayed) {
-      setIsActive(false);
-      setIsPaused(false);
-      setAlertDisplayed(true);
-      alert("Time's up!");
-    }
-
-    return () => clearInterval(interval);
-  }, [isActive, isPaused, timer, alertDisplayed]);
-
-  //can only test the notification across tabs when deployed. can not test  these notifications on local host
   // useEffect(() => {
   //   let interval = null;
   //   if (isActive && isPaused) {
@@ -47,16 +29,38 @@ const FocusTimer = ({ selectedTopic, setSelectedTopic, setShowAddSession }) => {
   //     setIsActive(false);
   //     setIsPaused(false);
   //     setAlertDisplayed(true);
-
-  //     if ("Notification" in window && Notification.permission === "granted") {
-  //       new Notification("Times up!");
-  //     } else {
-  //       alert("Times up!");
-  //     }
+  //     alert("Time's up!");
   //   }
 
   //   return () => clearInterval(interval);
   // }, [isActive, isPaused, timer, alertDisplayed]);
+
+  // can only test the notification across tabs when deployed. can not test  these notifications on local host
+  useEffect(() => {
+    let interval = null;
+    if (isActive && isPaused) {
+      interval = setInterval(() => {
+        setTimer((timer) => (timer > 0 ? timer - 1 : 0));
+      }, 1000);
+    } else if (!isPaused && timer !== 0) {
+      clearInterval(interval);
+    }
+
+    // Check if the timer is 0 and the alert has not been displayed yet
+    if (timer === 0 && !alertDisplayed) {
+      setIsActive(false);
+      setIsPaused(false);
+      setAlertDisplayed(true);
+
+      if ("Notification" in window && Notification.permission === "granted") {
+        new Notification("Times up!");
+      } else {
+        toast.warn("Times up!");
+      }
+    }
+
+    return () => clearInterval(interval);
+  }, [isActive, isPaused, timer, alertDisplayed]);
 
   // Reset the alertDisplayed state when timer is reset or started
   const handleReset = () => {

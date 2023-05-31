@@ -5,6 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signin } from "../../store/slice/userSlice";
 
+// Toastify
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Login = ({ handleToggleForm, handleToggleModal }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -26,15 +30,19 @@ const Login = ({ handleToggleForm, handleToggleModal }) => {
     e.preventDefault();
 
     if (email === "" || password === "") {
-      alert("No credentials provided!");
+      toast.warn("No credentials provided!");
       return;
     }
 
-    await dispatch(signin({ email, password }));
+    const signinResultAction = await dispatch(signin({ email, password }));
 
-    setEmail("");
-    setPassword("");
-    window.location.reload();
+    if (signinResultAction.type === "user/signin/fulfilled") {
+      setEmail("");
+      setPassword("");
+      window.location.reload();
+    } else {
+      toast.error("Invalid credentials");
+    }
   };
 
   return (

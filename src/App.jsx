@@ -16,6 +16,8 @@ import TopicDetails from "./components/TopicDetails/TopicDetails";
 import Forum from "./components/Forums/Forum";
 import FocusSession from "./components/FocusSession/FocusSession";
 
+import { ToastContainer } from "react-toastify";
+
 const App = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -35,6 +37,7 @@ const App = () => {
   return (
     <>
       <Header />
+      <ToastContainer />
       {currentUser && <Navbar />}
       <Routes>
         <Route path="/" element={<HomePage />} />
