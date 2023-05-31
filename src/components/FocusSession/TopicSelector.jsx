@@ -10,7 +10,7 @@ import {
 //sub component
 import TopicResources from "./TopicResources";
 
-const TopicSelector = ({ setSelectedTopic, selectedTopic }) => {
+const TopicSelector = ({ setSelectedTopic, selectedTopic, isActive }) => {
   const dispatch = useDispatch();
 
   const userTopics = useSelector((state) => state.topics.userTopics);
@@ -54,10 +54,14 @@ const TopicSelector = ({ setSelectedTopic, selectedTopic }) => {
   return (
     <div className="text-center">
       <h2 className="pb-2 text-darkGray font-semibold">
-        Select a Topic you created or subscribed to!
+        Select a Topic you created!
       </h2>
       <div className="pb-4">
-        <select value={selectedUserTopic} onChange={handleUserTopicSelect}>
+        <select
+          value={selectedUserTopic}
+          onChange={handleUserTopicSelect}
+          disabled={!!selectedSubscribedTopic || isActive}
+        >
           <option value="">Select a topic you created...</option>
           {userTopics.map((topic) => (
             <option key={topic.id} value={topic.id}>
@@ -66,11 +70,15 @@ const TopicSelector = ({ setSelectedTopic, selectedTopic }) => {
           ))}
         </select>
       </div>
-
+      <h2 className="pb-2 text-darkGray font-bold">OR</h2>
+      <h2 className="pb-2 text-darkGray font-semibold">
+        Select a Topic you subscribed to!
+      </h2>
       <div className="pb-4">
         <select
           value={selectedSubscribedTopic}
           onChange={handleSubscribedTopicSelect}
+          disabled={!!selectedUserTopic || isActive}
         >
           <option value="">Select a topic you subscribed...</option>
           {userSubscribedTopics.map((topic) => (

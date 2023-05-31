@@ -15,6 +15,9 @@ const FocusSession = () => {
   const [selectedTopic, setSelectedTopic] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
+  //timer
+  const [isActive, setIsActive] = useState(false);
+
   const dispatch = useDispatch();
 
   const sessions = useSelector((state) => state.focusSessions.focusSessions);
@@ -80,10 +83,9 @@ const FocusSession = () => {
           Start Focus Session
         </button>
       </div>
-
       {showAddSession && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 p-6 z-50">
-          <div className="bg-lightBlue rounded-lg shadow-lg p-6 relative">
+          <div className="bg-lightBlue rounded-lg shadow-lg p-6 relative overflow-y-auto max-h-[90vh]">
             <button
               onClick={handleToggleModal}
               className="absolute top-4 right-4 text-lg font-bold"
@@ -96,15 +98,19 @@ const FocusSession = () => {
             <TopicSelector
               selectedTopic={selectedTopic}
               setSelectedTopic={setSelectedTopic}
+              isActive={isActive}
             />
             <FocusTimer
               selectedTopic={selectedTopic}
               setSelectedTopic={setSelectedTopic}
               setShowAddSession={setShowAddSession}
+              isActive={isActive}
+              setIsActive={setIsActive}
             />
           </div>
         </div>
       )}
+
       {sessionComponents.length > 0 ? (
         sessionComponents
       ) : (
