@@ -113,19 +113,34 @@ const FocusTimer = ({
       )}:${timer % 60 < 10 ? "0" : ""}${timer % 60}`}</div>
       <div className="space-x-4">
         <button
-          className="bg-darkBlue opacity-75 hover:bg-darkBlue hover:opacity-100 text-white px-4 py-2 rounded transition-colors duration-300"
+          className={`bg-darkBlue text-white px-4 py-2 rounded transition-colors duration-300 ${
+            !selectedTopic
+              ? "opacity-50 cursor-not-allowed"
+              : "opacity-75 hover:bg-darkBlue hover:opacity-100"
+          }`}
+          disabled={!selectedTopic}
           onClick={handleStart}
         >
           Start
         </button>
         <button
-          className="bg-darkBlue opacity-75 hover:bg-darkBlue hover:opacity-100 text-white px-4 py-2 rounded transition-colors duration-300"
+          className={`bg-darkBlue text-white px-4 py-2 rounded transition-colors duration-300 ${
+            !selectedTopic
+              ? "opacity-50 cursor-not-allowed"
+              : "opacity-75 hover:bg-darkBlue hover:opacity-100"
+          }`}
+          disabled={!selectedTopic}
           onClick={handlePause}
         >
           Pause
         </button>
         <button
-          className="bg-darkBlue opacity-75 hover:bg-darkBlue hover:opacity-100 text-white px-4 py-2 rounded transition-colors duration-300"
+          className={`bg-darkBlue text-white px-4 py-2 rounded transition-colors duration-300 ${
+            !selectedTopic
+              ? "opacity-50 cursor-not-allowed"
+              : "opacity-75 hover:bg-darkBlue hover:opacity-100"
+          }`}
+          disabled={!selectedTopic}
           onClick={handleReset}
         >
           Reset
