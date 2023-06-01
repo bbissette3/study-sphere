@@ -104,7 +104,11 @@ const topicSlice = createSlice({
     userTopics: [],
     userSubscribedTopics: [],
   },
-  reducers: {},
+  reducers: {
+    clearSelectedTopic: (state) => {
+      state.selectedTopic = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       //all topics
@@ -178,4 +182,5 @@ const topicSlice = createSlice({
   },
 });
 
+export const { clearSelectedTopic } = topicSlice.actions;
 export default topicSlice.reducer;

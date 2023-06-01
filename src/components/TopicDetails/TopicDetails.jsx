@@ -4,7 +4,10 @@ import { IoIosArrowBack } from "react-icons/io";
 
 //redux
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTopicById } from "../../store/slice/topicSlice";
+import {
+  fetchTopicById,
+  clearSelectedTopic,
+} from "../../store/slice/topicSlice";
 
 //sub component
 import ResourcesList from "./ResourcesList";
@@ -26,12 +29,17 @@ const TopicDetails = () => {
 
   const isCurrentUserTopicCreator = topic && topic.userId === currentUserId;
 
+  const handleBackClick = () => {
+    dispatch(clearSelectedTopic());
+    navigate(-1);
+  };
+
   return (
     <div className="container mx-auto py-10 pl-64 pr-8 text-darkGray">
       <div className="bg-tan p-8">
         <div className="flex justify-between">
           <button
-            onClick={() => navigate(-1)}
+            onClick={handleBackClick}
             className="mb-4 flex items-center text-darkGray"
           >
             <IoIosArrowBack size={24} className="mr-2" />
